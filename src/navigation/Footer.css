@@ -1,0 +1,62 @@
+.footer_container {
+  position: relative;
+  height: 700px;
+  padding-top: 6rem;
+  background-color: var(--text-color);
+  color: var(--footer-text-color);
+}
+
+.footer_logo {
+  font-size: 4rem !important;
+}
+
+.footer_menu_items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer_menu_items .menu_item {
+  cursor: pointer;
+  display: block;
+  margin: 0 6rem;
+  position: relative;
+  color: inherit;
+  font-weight: 500;
+  font-size: 2rem;
+  transition: opacity 0.5s ease-out;
+}
+
+.footer_container .footer_menu_items:hover > .menu_item {
+  opacity: 0.25;
+}
+
+.footer_menu_items:hover > .menu_item:hover {
+  opacity: 1;
+}
+
+.footer_container .social_items {
+  position: absolute;
+  margin: 2rem 19rem;
+  right: 0;
+}
+
+.footer_container .social_item {
+  display: block;
+  margin: 2.5rem 0;
+  font-size: 1.5rem;
+  transition: opacity 0.5s ease-out;
+}
+
+.footer_container .social_item svg {
+  fill: var(--footer-text-color);
+  visibility: visible;
+}
+
+.footer_container .social_items:hover > .social_item {
+  opacity: 0.25;
+}
+
+.footer_container .social_items:hover > .social_item:hover {
+  opacity: 1;
+}

@@ -1,0 +1,30 @@
+// Handle reveal animation with IntersectionObserver API
+  useEffect(() => {
+    const options = {
+      root: null, // use the viewport as the root
+      rootMargin: "0px",
+      threshold: 0.8, // 0.5 means 50% of the element is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Element is now in the viewport
+          entry.target.classList.remove("unreveal");
+          entry.target.classList.add("reveal");
+        } else {
+          entry.target.classList.remove("reveal");
+          entry.target.classList.add("unreveal");
+        }
+      });
+    }, options);
+
+    if (revealRef.current) {
+      observer.observe(revealRef.current);
+    }
+
+    // Cleanup the observer on component unmount
+    return () => {
+      observer.disconnect();
+    };
+  }, []);

@@ -1,0 +1,33 @@
+import React, { useEffect, useState } from "react";
+
+const MouseParallax = ({ children, className }) => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (event) => {
+      setMousePosition({ x: event.clientX, y: event.clientY });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
+  const parallaxStyles = {
+    backgroundPositionY: `${mousePosition.y * -0.1}px`,
+    minHeight: "100vh",
+  };
+
+  return (
+    <div
+      className={`menu_parallax-container ${className}`}
+      style={parallaxStyles}
+    >
+      {children}
+    </div>
+  );
+};
+
+export default MouseParallax;

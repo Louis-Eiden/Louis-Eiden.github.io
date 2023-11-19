@@ -1,0 +1,123 @@
+.about_container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.timeline_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  scroll-snap-type: y proximity;
+  overflow-y: scroll;
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  margin-top: 5rem;
+  /* margin: 15rem 0; */
+  /* WebKit browsers (Safari, Chrome) */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 10%,
+    black 50%,
+    transparent 90%
+  );
+  /* Standard syntax */
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    black 50%,
+    transparent 100%
+  );
+}
+
+.timeline {
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  width: 3px;
+  height: 100%;
+  background-color: var(--text-color);
+}
+
+/* Fade */
+/* .timeline_container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0) 75%,
+    rgba(255, 255, 255, 0.9) 100%
+  );
+} */
+
+.timestamp {
+  display: flex;
+  align-items: center;
+  scroll-snap-align: center;
+  width: min-content;
+  margin: 8rem 0;
+
+  height: 500px;
+}
+
+.dot {
+  margin-left: -4px;
+  margin-right: 1rem;
+  width: 11px;
+  height: 11px;
+  border-radius: 7.5px;
+  /* background-color: var(--text-color); */
+  background-color: black;
+}
+
+.timestamp.active .dot {
+  background-color: black;
+}
+
+.year {
+  width: 200px;
+  color: black;
+  opacity: 0;
+  transition: opacity 2s ease-out;
+}
+
+.timestamp.active .year {
+  /* color: black; */
+  opacity: 1;
+}
+
+.timeline_details {
+  height: 100%;
+  justify-content: start;
+}
+
+.details {
+  margin: 8rem 0;
+  height: 500px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.text {
+  color: black;
+}
+
+.details .text ul {
+  list-style: circle;
+}
+
+.timeline-link {
+  text-decoration: underline;
+}
