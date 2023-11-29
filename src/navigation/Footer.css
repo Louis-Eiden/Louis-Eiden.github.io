@@ -4,6 +4,7 @@
   padding-top: 6rem;
   background-color: var(--text-color);
   color: var(--footer-text-color);
+  /* Set text-fill-color to transparent to make the font color match the underlying div */
 }
 
 .footer_logo {

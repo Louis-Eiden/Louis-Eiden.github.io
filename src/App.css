@@ -21,6 +21,39 @@ html {
   /* overflow-x: hidden;
   overflow-y: scroll; */
   scroll-snap-type: y proximity;
+  background: rgb(237, 165, 27);
+  /* background: -moz-linear-gradient(
+    0deg,
+    rgba(243, 226, 105, 1) 0%,
+    rgba(237, 165, 27, 1) 6%,
+    rgba(241, 73, 8, 1) 14%,
+    rgba(187, 39, 24, 1) 26%,
+    rgba(26, 41, 53, 1) 66%,
+    rgba(11, 13, 36, 1) 94%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(243, 226, 105, 1) 0%,
+    rgba(237, 165, 27, 1) 6%,
+    rgba(241, 73, 8, 1) 14%,
+    rgba(187, 39, 24, 1) 26%,
+    rgba(26, 41, 53, 1) 66%,
+    rgba(11, 13, 36, 1) 94%
+  );
+  background: linear-gradient(
+      0deg,
+      rgba(243, 226, 105, 1) 0%,
+      rgba(237, 165, 27, 1) 6%,
+      rgba(241, 73, 8, 1) 14%,
+      rgba(187, 39, 24, 1) 26%,
+      rgba(26, 41, 53, 1) 66%,
+      rgba(11, 13, 36, 1) 94%
+    )
+    no-repeat fixed;
+  background-size: auto 850%;
+  background-size: auto 1405%;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eda51b",endColorstr="#0b0d24",GradientType=1); */
+
   background: rgb(202, 190, 194);
   background: -moz-linear-gradient(
     0deg,
@@ -43,6 +76,38 @@ html {
     no-repeat fixed;
   background-size: auto 1450%;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cabec2",endColorstr="#d8eaf4",GradientType=1);
+}
+
+html.dark {
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(243, 226, 105, 1) 0%,
+    rgba(237, 165, 27, 1) 6%,
+    rgba(241, 73, 8, 1) 14%,
+    rgba(187, 39, 24, 1) 26%,
+    rgba(26, 41, 53, 1) 66%,
+    rgba(11, 13, 36, 1) 94%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(243, 226, 105, 1) 0%,
+    rgba(237, 165, 27, 1) 6%,
+    rgba(241, 73, 8, 1) 14%,
+    rgba(187, 39, 24, 1) 26%,
+    rgba(26, 41, 53, 1) 66%,
+    rgba(11, 13, 36, 1) 94%
+  );
+  background: linear-gradient(
+      0deg,
+      rgba(241, 73, 8, 1) 0%,
+      rgba(187, 39, 24, 1) 6%,
+      rgba(26, 41, 53, 1) 66%,
+      rgba(11, 13, 36, 1) 94%
+    )
+    no-repeat fixed;
+  background-size: auto 850%;
+  background-size: auto 1405%;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eda51b",endColorstr="#0b0d24",GradientType=1);
 }
 
 a,
@@ -109,18 +174,35 @@ html::-webkit-scrollbar-thumb:hover {
 
 /* Arrow */
 
-.arrow {
+.arrow_container {
   position: fixed;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 2rem;
   bottom: 0;
   left: 50%;
+  transform: translateX(-50%);
+}
+
+.arrow_container p {
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.arrow,
+.arrow_left {
   width: 25px;
   height: 25px;
   border-top: var(--border-big);
   border-left: var(--border-big);
   cursor: pointer;
-  transform: rotate(-135deg) translateX(-50%);
+}
+
+.arrow {
+  transform: rotate(-135deg);
 }
 
 /* Arrow hover animations */
@@ -130,10 +212,10 @@ html::-webkit-scrollbar-thumb:hover {
 
 @keyframes arrow_enter_animation {
   0% {
-    transform: rotate(-135deg) translateX(-50%) scale(1);
+    transform: rotate(-135deg) scale(1);
   }
   100% {
-    transform: rotate(-135deg) translateX(-50%) scale(1.3);
+    transform: rotate(-135deg) scale(1.3);
   }
 }
 
@@ -143,10 +225,10 @@ html::-webkit-scrollbar-thumb:hover {
 
 @keyframes arrow_leave_animation {
   0% {
-    transform: rotate(-135deg) translateX(-50%) scale(1.3);
+    transform: rotate(-135deg) scale(1.3);
   }
   100% {
-    transform: rotate(-135deg) translateX(-50%) scale(1);
+    transform: rotate(-135deg) scale(1);
   }
 }
 
@@ -224,5 +306,100 @@ html::-webkit-scrollbar-thumb:hover {
   100% {
     transform: rotate(-135deg);
     /* margin-bottom: 1rem; */
+  }
+}
+
+/* Arrow Left */
+.arrow_left_container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 50%;
+  transform: translateY(-50%);
+  left: unset;
+  right: 0;
+  margin-right: 2rem;
+}
+
+.arrow_left_container p {
+  cursor: pointer;
+  color: var(--text-color);
+  font-size: 1.75rem;
+  margin-right: 2rem;
+}
+
+.arrow_left {
+  transform: rotate(-225deg);
+}
+
+/* Left Arrow hover animations */
+.arrow_left.enter {
+  animation: arrow_left_enter_animation 0.5s ease-out forwards;
+}
+
+@keyframes arrow_left_enter_animation {
+  0% {
+    transform: rotate(-225deg) scale(1);
+  }
+  100% {
+    transform: rotate(-225deg) scale(1.3);
+  }
+}
+
+.arrow_left.leave {
+  animation: arrow_left_leave_animation 0.5s ease-out forwards;
+}
+
+@keyframes arrow_left_leave_animation {
+  0% {
+    transform: rotate(-225deg) scale(1.3);
+  }
+  100% {
+    transform: rotate(-225deg) scale(1);
+  }
+}
+
+.arrow_left::after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 45px;
+  background-color: var(--text-color);
+  transform: rotate(-45deg) translate(14.5px, 4px);
+  left: 0;
+  top: 0;
+}
+
+.arrow_left.enter::after {
+  animation: arrow_left_after_enter_animation 0.5s ease-out forwards;
+}
+
+@keyframes arrow_left_after_enter_animation {
+  0% {
+    transform: rotate(-45deg) translate(14.5px, 4px);
+    height: 45px;
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-45deg) translate(5.75px, 1px);
+    height: 20px;
+    opacity: 0.5;
+  }
+}
+
+.arrow_left.leave::after {
+  animation: arrow_left_after_leave_animation 0.5s ease-out forwards;
+}
+
+@keyframes arrow_left_after_leave_animation {
+  0% {
+    transform: rotate(-45deg) translate(5.75px, 1px);
+    height: 20px;
+    opacity: 0.5;
+  }
+  100% {
+    transform: rotate(-45deg) translate(14.5px, 4px);
+    height: 45px;
+    opacity: 1;
   }
 }

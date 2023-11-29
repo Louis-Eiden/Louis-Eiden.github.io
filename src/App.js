@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { HashRouter, Routes, Route } from "react-router-dom";
 
 import { LanguageProvider } from "./utils/LanguageContext";
+import { ThemeProvider } from "./utils/ThemeContext";
 
 import Logo from "./components/Logo";
 import Menu from "./navigation/Menu";
@@ -30,18 +31,20 @@ export default function App() {
   }, []);
 
   return (
-    <LanguageProvider>
-      <HashRouter>
-        <Logo />
-        <Menu />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <Footer />
-      </HashRouter>
-    </LanguageProvider>
+    <ThemeProvider>
+      <LanguageProvider>
+        <HashRouter>
+          <Logo />
+          <Menu />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+          <Footer />
+        </HashRouter>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }

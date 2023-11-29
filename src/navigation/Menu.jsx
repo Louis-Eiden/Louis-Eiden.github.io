@@ -2,8 +2,11 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { LanguageContext } from "../utils/LanguageContext";
+import { ThemeContext } from "../utils/ThemeContext";
 
 import SocialButtons from "./SocialButtons";
+
+import { FiSun, FiMoon } from "react-icons/fi";
 
 import "../App.css";
 import "./Menu.css";
@@ -13,6 +16,22 @@ export default function Menu() {
   const [menuState, setMenuState] = useState("");
   const [menuButtonState, setMenuButtonState] = useState("");
   const { language, setLanguage } = useContext(LanguageContext);
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  // Theme changes
+  useEffect(() => {
+    // Access the html element
+    const htmlElement = document.querySelector("html");
+
+    // Check the theme and add/remove the dark class accordingly
+    if (htmlElement) {
+      if (theme === "dark") {
+        htmlElement.classList.add("dark");
+      } else {
+        htmlElement.classList.remove("dark");
+      }
+    }
+  }, [theme]);
 
   const toggleMenu = () => {
     setMenuState((prevMenuState) =>
@@ -44,7 +63,7 @@ export default function Menu() {
     const handleMouseMove = (event) => {
       const menuElement = document.querySelector(".menu");
       if (menuElement) {
-        menuElement.style.backgroundPositionY = `${event.clientY * -1}px`;
+        menuElement.style.backgroundPositionY = `${event.clientY * -2.5}px`;
       }
     };
 
@@ -86,20 +105,34 @@ export default function Menu() {
           <div></div>
         </div>
       </div>
-      <nav className={`menu ${menuState}`}>
-        <div className="language_buttons">
-          <span
-            onClick={() => setLanguage("english")}
-            className={`menu_item ${language === "english" ? "active" : ""}`}
-          >
-            en
-          </span>
-          <span
-            onClick={() => setLanguage("german")}
-            className={`menu_item ${language === "german" ? "active" : ""}`}
-          >
-            {language === "german" ? "de" : "ger"}
-          </span>
+      <nav className={`menu ${menuState} ${theme === "dark" ? "dark" : ""}`}>
+        <div className="interface_button">
+          <div className="theme_buttons">
+            {theme === "dark" ? (
+              <FiSun
+                onClick={() => {
+                  console.log("clicked");
+                  setTheme("bright");
+                }}
+              />
+            ) : (
+              <FiMoon onClick={() => setTheme("dark")} />
+            )}
+          </div>
+          <div className="language_buttons">
+            <span
+              onClick={() => setLanguage("english")}
+              className={`menu_item ${language === "english" ? "active" : ""}`}
+            >
+              en
+            </span>
+            <span
+              onClick={() => setLanguage("german")}
+              className={`menu_item ${language === "german" ? "active" : ""}`}
+            >
+              {language === "german" ? "de" : "ger"}
+            </span>
+          </div>
         </div>
         <div className="menu_items">
           <Link

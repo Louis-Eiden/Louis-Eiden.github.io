@@ -19,7 +19,7 @@ export default function Footer() {
       <div className="footer_container">
         <div className="footer_menu_items">
           <Link className="footer_logo menu_item" onClick={scrollToTop} to="/">
-            N/7
+            L/E
           </Link>
           <Link className="menu_item" to="/">
             {language === "german" ? "start" : "home"}

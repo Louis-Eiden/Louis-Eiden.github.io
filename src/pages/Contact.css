@@ -1,5 +1,35 @@
 .contact_container {
   height: 100vh;
   display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#contact-form {
+  width: 50%;
+  display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#contact-form input,
+#contact-form textarea {
+  width: 100%;
+  margin-bottom: 35%;
+  border: none;
+  border-bottom: var(--border-small);
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  resize: none;
+}
+
+#contact-form label {
+  color: var(--text-color);
+}
+
+#contact-form button {
+  all: unset;
 }

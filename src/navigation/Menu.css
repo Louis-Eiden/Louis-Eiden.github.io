@@ -1,11 +1,30 @@
-.language_buttons {
+.interface_button {
   position: absolute;
-  top: 0px;
-  right: 0px;
-  margin: 100px 450px 0 0;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  top: 0;
+  right: 0;
+  width: 100%;
+  margin: 5% 25% 0 0;
+}
+
+.theme_buttons {
+  display: flex;
+  align-items: center;
+  font-size: 2rem;
+  cursor: pointer;
+  margin: 0 7.5% 0 0;
+  opacity: 0.5;
+  transition: opacity 0.5s ease-out;
+}
+
+.theme_buttons:hover {
+  opacity: 1;
 }
 
 .language_buttons .menu_item {
+  padding: 0 10%;
   display: inline;
   font-weight: 600;
   font-size: 20px;
@@ -27,7 +46,7 @@
   z-index: 100;
   cursor: pointer;
   right: 0px;
-  margin: 100px 200px 0 0;
+  margin: 5% 10% 0 0;
   /* text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 
@@ -181,8 +200,41 @@
       rgba(216, 234, 244, 1) 66%
     )
     no-repeat fixed;
-  background-size: auto 200%;
+  background-size: auto 350%;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cabec2",endColorstr="#d8eaf4",GradientType=1);
+}
+
+.menu.dark {
+  background: -moz-linear-gradient(
+    0deg,
+    rgba(243, 226, 105, 1) 0%,
+    rgba(237, 165, 27, 1) 6%,
+    rgba(241, 73, 8, 1) 14%,
+    rgba(187, 39, 24, 1) 26%,
+    rgba(26, 41, 53, 1) 66%,
+    rgba(11, 13, 36, 1) 94%
+  );
+  background: -webkit-linear-gradient(
+    0deg,
+    rgba(243, 226, 105, 1) 0%,
+    rgba(237, 165, 27, 1) 6%,
+    rgba(241, 73, 8, 1) 14%,
+    rgba(187, 39, 24, 1) 26%,
+    rgba(26, 41, 53, 1) 66%,
+    rgba(11, 13, 36, 1) 94%
+  );
+  background: linear-gradient(
+      0deg,
+      /* rgba(243, 226, 105, 1) 0%,
+      rgba(237, 165, 27, 1) 6%, */
+        rgba(241, 73, 8, 1) 0%,
+      rgba(187, 39, 24, 1) 6%,
+      rgba(26, 41, 53, 1) 66%,
+      rgba(11, 13, 36, 1) 94%
+    )
+    no-repeat fixed;
+  background-size: auto 350%;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#eda51b",endColorstr="#0b0d24",GradientType=1);
 }
 
 .menu.open,

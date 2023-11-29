@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
+import { Link } from "react-router-dom";
+
 import { LanguageContext } from "../utils/LanguageContext.jsx";
 import ScrollReveal from "../utils/ScrollReveal";
 
@@ -13,6 +15,7 @@ import "./Home.css";
 
 export default function Home() {
   const [arrowState, setArrowState] = useState("");
+  const [leftArrowState, setLeftArrowState] = useState("");
   const [arrowDirection, setArrowDirection] = useState("");
   const [section, setSection] = useState("");
 
@@ -71,10 +74,20 @@ export default function Home() {
     }
   };
 
-  const animateArrowButton = () => {
-    setArrowState((prevArrowState) =>
-      prevArrowState === "enter" ? "leave" : "enter"
-    );
+  const animateArrowButton = (e) => {
+    const arrowElement = e.currentTarget;
+
+    console.log(arrowElement.classList[0]);
+
+    if (arrowElement.classList[0] === "arrow") {
+      setArrowState((prevArrowState) =>
+        prevArrowState === "enter" ? "leave" : "enter"
+      );
+    } else {
+      setLeftArrowState((prevLeftArrowState) =>
+        prevLeftArrowState === "enter" ? "leave" : "enter"
+      );
+    }
   };
 
   return (
@@ -217,7 +230,13 @@ export default function Home() {
               title="Windows"
               icon={<FaIcons.FaWindows className="icon windows" />}
             />
-            {/* <ProgressBar
+            {/* 
+            <ProgressBar
+              targetPercentage={45}
+              title="Postman"
+              icon={<SiIcons.SiPostman className="icon postman" />}
+            />
+            <ProgressBar
               targetPercentage={45}
               title="Arduino"
               icon={<SiIcons.SiArduino className="icon arduino" />}
@@ -264,12 +283,36 @@ export default function Home() {
             /> */}
           </div>
         </section>
-        <div
-          className={`arrow ${arrowState} ${arrowDirection}`}
-          onMouseEnter={animateArrowButton}
-          onMouseLeave={animateArrowButton}
-          onClick={scrollToNextSection}
-        ></div>
+        <div className="arrow_container">
+          <p
+            onMouseEnter={(e) => animateArrowButton(e)}
+            onMouseLeave={(e) => animateArrowButton(e)}
+            onClick={scrollToNextSection}
+          >
+            {section}
+          </p>
+          <div
+            className={`arrow ${arrowState} ${arrowDirection}`}
+            onMouseEnter={(e) => animateArrowButton(e)}
+            onMouseLeave={(e) => animateArrowButton(e)}
+            onClick={scrollToNextSection}
+          ></div>
+        </div>
+        <Link to="/projects">
+          <div className="arrow_left_container">
+            <p
+              onMouseEnter={(e) => animateArrowButton(e)}
+              onMouseLeave={(e) => animateArrowButton(e)}
+            >
+              projects
+            </p>
+            <div
+              className={`arrow_left ${leftArrowState}`}
+              onMouseEnter={(e) => animateArrowButton(e)}
+              onMouseLeave={(e) => animateArrowButton(e)}
+            ></div>
+          </div>
+        </Link>
       </div>
       {elementsToReveal && <ScrollReveal elements={elementsToReveal} />}
     </>
