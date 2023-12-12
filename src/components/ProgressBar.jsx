@@ -2,17 +2,27 @@
 import React, { useEffect, useRef } from "react";
 import "./ProgressBar.css";
 
-// Constant Values
-const MAX_WIDTH = 550;
-const VALUE_ANIMATION_INTERVAL = 25;
-const PROGRESS_ANIMATION_INTERVAL = 2.5;
-const THRESHOLD = 0.5;
+import { useViewport } from "../utils/ViewportContext";
 
 const ProgressBar = ({ targetPercentage, title, icon }) => {
+  const { width } = useViewport();
+  const tablet_breakpoint = 1440;
+  const mobile_breakpoint = 768;
+  let isTablet = width <= tablet_breakpoint;
+  let isMobile = width <= mobile_breakpoint;
+
+  // Constant Values
+  let max_size = isMobile ? 100 : isTablet ? 125 : 550;
+  let value_animation_interval = isTablet || isMobile ? 10 : 25;
+  let progress_animation_interval = isTablet || isMobile ? 10 : 2.5;
+  let threshold = 0.5;
+
   const counterRef = useRef(null);
   const progressBarRef = useRef(null);
 
   useEffect(() => {
+    console.log(isMobile);
+    console.log(max_size);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -20,20 +30,23 @@ const ProgressBar = ({ targetPercentage, title, icon }) => {
           if (entry.isIntersecting) {
             // Function to increment the progress
             const updateProgress = () => {
-              const progress = (MAX_WIDTH / 100) * targetPercentage;
+              const progress = (max_size / 100) * targetPercentage;
 
               // Access the Progress Bar element
               let progressElement = progressBarRef.current;
 
-              // Get the current width of the progress
-              let progressElementWidth = +progressElement.style.width.replace(
-                "px",
-                ""
-              );
+              // Get the current size of the progress
+              let progressElementSize = isTablet
+                ? +progressElement.style.height.replace("px", "")
+                : +progressElement.style.width.replace("px", "");
 
-              if (progressElementWidth < progress) {
-                progressElement.style.width = progressElementWidth + 1 + "px"; // Set it plus 1 for the rect
-                setTimeout(updateProgress, PROGRESS_ANIMATION_INTERVAL);
+              if (progressElementSize < progress) {
+                isTablet
+                  ? (progressElement.style.height =
+                      progressElementSize + 1 + "px")
+                  : (progressElement.style.width =
+                      progressElementSize + 1 + "px"); // Set it plus 1 for the rect
+                setTimeout(updateProgress, progress_animation_interval);
               }
             };
 
@@ -42,7 +55,7 @@ const ProgressBar = ({ targetPercentage, title, icon }) => {
               let currentNum = +counterRef.current.innerText.replace("%", "");
               if (currentNum < targetPercentage) {
                 counterRef.current.innerText = currentNum + 1 + "%";
-                setTimeout(updateCount, VALUE_ANIMATION_INTERVAL);
+                setTimeout(updateCount, value_animation_interval);
               }
             };
 
@@ -51,7 +64,7 @@ const ProgressBar = ({ targetPercentage, title, icon }) => {
           }
         });
       },
-      { threshold: THRESHOLD }
+      { threshold: threshold }
     );
 
     observer.observe(progressBarRef.current);

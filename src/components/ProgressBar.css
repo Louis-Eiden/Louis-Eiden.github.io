@@ -6,6 +6,7 @@
 
 .sk-progress {
   position: relative;
+  border-radius: 3px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
@@ -53,4 +54,46 @@
   margin: 0 0.75rem;
   display: flex;
   align-items: center;
+}
+
+@media (max-width: 1440px) {
+  .sk-progress {
+    display: flex;
+    justify-content: center;
+  }
+  .progress_bar {
+    width: 125px;
+    height: 125px;
+    align-items: end;
+    justify-content: center;
+  }
+
+  .sk-progress .progress_bar .progress {
+    height: 0;
+    width: 125px;
+  }
+
+  .counter {
+    position: unset;
+    right: unset;
+  }
+
+  .sk-title {
+    width: 150px;
+    left: unset;
+    justify-content: center;
+  }
+
+  .sk-icon {
+    margin: 0 0.75rem 0 0;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .progress_bar {
+    width: 125px;
+    height: 100px;
+  }
 }

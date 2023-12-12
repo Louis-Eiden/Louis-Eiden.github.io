@@ -4,7 +4,7 @@ const ScrollReveal = ({ elements }) => {
   useEffect(() => {
     const options = {
       root: null,
-      rootMargin: "0px",
+      rootMargin: "50%",
       threshold: 0.8,
     };
 

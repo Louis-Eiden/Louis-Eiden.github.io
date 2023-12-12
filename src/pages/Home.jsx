@@ -10,6 +10,8 @@ import * as SiIcons from "react-icons/si";
 import { PiFileSql } from "react-icons/pi";
 import { TbApi } from "react-icons/tb";
 
+// import louis from "../assets/louis.png";
+
 import "../App.css";
 import "./Home.css";
 
@@ -52,6 +54,12 @@ export default function Home() {
         setArrowDirection((prevArrowDirection) =>
           prevArrowDirection === "" ? "" : "down"
         );
+        // // Remove "down" class after 0.5 seconds
+        // setTimeout(() => {
+        //   if (arrowDirection === "down") {
+        //     document.getElementsByClassName(".arrow").className
+        //   }
+        // }, 500);
       }
     };
 
@@ -76,8 +84,6 @@ export default function Home() {
 
   const animateArrowButton = (e) => {
     const arrowElement = e.currentTarget;
-
-    console.log(arrowElement.classList[0]);
 
     if (arrowElement.classList[0] === "arrow") {
       setArrowState((prevArrowState) =>
@@ -109,21 +115,18 @@ export default function Home() {
               </p>
             ) : (
               <p className="EN">
-                As an aspiring and proactive Junior Developer, I am passionate
-                about creating innovative and engaging web experiences. With a
-                strong foundation in front-end and back-end development. My
-                dedication to continuous learning drives me to stay abreast of
-                the latest industry trends and technologies. I am adept at
-                building responsive user interfaces and reliable server-side
-                applications while ensuring seamless database management. A
-                collaborative team player with a strong work ethic. Let's work
-                together to create outstanding web solutions.
+                Hi, I am Louis, full-stack developer from Germany. 1 years of
+                experience in Python, React, Node.js, and Postgres. Ready to
+                create innovative web solutions!
               </p>
             )}
           </div>
+          {/* <div className="picture-container">
+            <img className="picture" src={louis} alt="" />
+          </div> */}
         </section>
         <section id="tech">
-          <div className="tech_heading">tech</div>
+          {/* <div className="tech_heading">tech</div> */}
           <div className="skills-wrap">
             <ProgressBar
               targetPercentage={75}
@@ -178,7 +181,7 @@ export default function Home() {
           </div>
         </section>
         <section id="uses">
-          <div className="uses_heading">uses</div>
+          {/* <div className="uses_heading">uses</div> */}
           <div className="skills-wrap">
             <ProgressBar
               targetPercentage={50}
@@ -212,8 +215,8 @@ export default function Home() {
             />
             <ProgressBar
               targetPercentage={85}
-              title="Google Chrome"
-              icon={<SiIcons.SiGooglechrome className="icon googlechrome" />}
+              title="Chrome"
+              icon={<SiIcons.SiGooglechrome className="icon chrome" />}
             />
             <ProgressBar
               targetPercentage={80}
@@ -283,16 +286,17 @@ export default function Home() {
             /> */}
           </div>
         </section>
-        <div className="arrow_container">
-          <p
+        <div className={`arrow_container ${arrowDirection}`}>
+          {" "}
+          {/* <p
             onMouseEnter={(e) => animateArrowButton(e)}
             onMouseLeave={(e) => animateArrowButton(e)}
             onClick={scrollToNextSection}
           >
             {section}
-          </p>
+          </p> */}
           <div
-            className={`arrow ${arrowState} ${arrowDirection}`}
+            className={`arrow ${arrowState}`}
             onMouseEnter={(e) => animateArrowButton(e)}
             onMouseLeave={(e) => animateArrowButton(e)}
             onClick={scrollToNextSection}
@@ -300,12 +304,12 @@ export default function Home() {
         </div>
         <Link to="/projects">
           <div className="arrow_left_container">
-            <p
+            {/* <p
               onMouseEnter={(e) => animateArrowButton(e)}
               onMouseLeave={(e) => animateArrowButton(e)}
             >
               projects
-            </p>
+            </p> */}
             <div
               className={`arrow_left ${leftArrowState}`}
               onMouseEnter={(e) => animateArrowButton(e)}

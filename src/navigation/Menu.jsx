@@ -6,7 +6,11 @@ import { ThemeContext } from "../utils/ThemeContext";
 
 import SocialButtons from "./SocialButtons";
 
+import Lebenslauf from "../assets/Lebenslauf.pdf";
+import CV from "../assets/CV.pdf";
+
 import { FiSun, FiMoon } from "react-icons/fi";
+import { MdDownload } from "react-icons/md";
 
 import "../App.css";
 import "./Menu.css";
@@ -174,6 +178,21 @@ export default function Menu() {
             }}
           >
             {language === "german" ? "kontakt" : "contact"}
+          </Link>
+          <Link
+            className="menu_item download-button"
+            to={
+              language === "german"
+                ? "../assets/Lebenslauf.pdf"
+                : "../assets/CV.pdf"
+            }
+            onClick={() => {
+              toggleMenu();
+              scrollToTop();
+            }}
+          >
+            {language === "german" ? "lebenslauf" : "cv"}
+            <MdDownload className="download-icon" />
           </Link>
         </div>
         <SocialButtons />
