@@ -18,7 +18,7 @@ export default function Contact() {
           </p>
           <p>{/* <label htmlFor="message">message:</label> */}</p>
           <p>
-            <input id="Message" type="text" placeholder="message" />
+            <textarea id="Message" type="text" placeholder="message" rows={4} />
           </p>
           <p>
             <button type="submit">send</button>

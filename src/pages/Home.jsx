@@ -1,12 +1,18 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+
+import Logo from "../components/Logo";
 
 import { LanguageContext } from "../utils/LanguageContext.jsx";
-import ScrollReveal from "../utils/ScrollReveal";
+import { useViewport } from "../utils/ViewportContext";
+
+// import ScrollReveal from "../utils/ScrollReveal";
 
 import ProgressBar from "../components/ProgressBar";
 import * as FaIcons from "react-icons/fa";
 import * as SiIcons from "react-icons/si";
+import { FaAngleDown } from "react-icons/fa6";
 import { PiFileSql } from "react-icons/pi";
 import { TbApi } from "react-icons/tb";
 
@@ -23,15 +29,20 @@ export default function Home() {
 
   const { language } = useContext(LanguageContext);
 
-  const [elementsToReveal, setElementsToReveal] = useState([]);
-  const summaryRef = useRef(null);
+  const { width } = useViewport();
+  const mobile_breakpoint = 480;
+  let isMobile = width <= mobile_breakpoint;
 
-  useEffect(() => {
-    // Update the state with the elements you want to reveal
-    setElementsToReveal([
-      { element: summaryRef.current, positionClass: "left_reveal" },
-    ]);
-  }, [summaryRef]);
+  // const [elementsToReveal, setElementsToReveal] = useState([]);
+  // const summaryRef = useRef(null);
+
+  // useEffect(() => {
+  //   // Update the state with the elements you want to reveal
+  //   setElementsToReveal([
+  //     { element: summaryRef.current, positionClass: "left_reveal" },
+  //   ]);
+  //   console.log(elementsToReveal);
+  // }, [summaryRef]);
 
   // ------------- Update Arrow when scrolling --------------- //
   useEffect(() => {
@@ -96,31 +107,76 @@ export default function Home() {
     }
   };
 
+  const mobileAngleVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
   return (
     <>
+      <Logo />
       <div className="home_container">
         <section id="home">
-          <div className="summary" ref={summaryRef}>
+          <motion.div
+            initial={{ opacity: 0, y: -50, x: isMobile ? -100 : 100 }}
+            whileInView={{ opacity: 1, y: -50, x: 0 }}
+            transition={{ duration: 1 }}
+            className="summary"
+          >
+            {/* <div className="summary" ref={summaryRef}> */}
             {language === "german" ? (
-              <p className="DE">
-                Als aufstrebender Junior Entwickler verfüge ich über fundierte
-                Kenntnisse in der Frontend- und Backend-Entwicklung sowie eine
-                Leidenschaft für innovative Technologien. Ich habe Erfahrung in
-                der Gestaltung und Umsetzung ansprechender, benutzerfreundlicher
-                Websites und Webanwendungen mit nahtloser Datenbankverwaltung.
-                Ich arbeite gerne im Team und bin stets motiviert, meine
-                Fähigkeiten zu erweitern und mich neuen Herausforderungen zu
-                stellen. Gemeinsam können wir außergewöhnliche Web-Lösungen
-                entwickeln, die nachhaltigen Eindruck hinterlassen.
-              </p>
+              <>
+                <p className="DE">
+                  Hallo, ich bin Louis, Full-Stack-Entwickler aus Deutschland. 1
+                  Jahr Erfahrung in Python, React, Node.js und Postgres. Hoch
+                  motivierter, innovative Weblösungen zu entwickeln!
+                </p>
+                {width < 378 ? (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate="visible"
+                    variants={mobileAngleVariants}
+                    transition={{ duration: 1, delay: 1 }}
+                    className="mobile-angle"
+                  >
+                    {" "}
+                    <p onClick={scrollToNextSection}>hier gehts weiter</p>
+                    <p>
+                      <FaAngleDown />
+                    </p>
+                  </motion.div>
+                ) : (
+                  ""
+                )}
+              </>
             ) : (
-              <p className="EN">
-                Hi, I am Louis, full-stack developer from Germany. 1 years of
-                experience in Python, React, Node.js, and Postgres. Ready to
-                create innovative web solutions!
-              </p>
+              <>
+                <p className="EN">
+                  Hi, I am Louis, full-stack developer from Germany. 1 year of
+                  experience in Python, React, Node.js, and Postgres. Ready to
+                  create innovative web solutions!
+                </p>
+                {width < 378 ? (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate="visible"
+                    variants={mobileAngleVariants}
+                    transition={{ duration: 1, delay: 1 }}
+                    className="mobile-angle"
+                  >
+                    {" "}
+                    <p onClick={scrollToNextSection}>scroll for more</p>
+                    <p>
+                      <FaAngleDown />
+                    </p>
+                  </motion.div>
+                ) : (
+                  ""
+                )}
+              </>
             )}
-          </div>
+            {/* </div> */}
+          </motion.div>
           {/* <div className="picture-container">
             <img className="picture" src={louis} alt="" />
           </div> */}
@@ -287,7 +343,6 @@ export default function Home() {
           </div>
         </section>
         <div className={`arrow_container ${arrowDirection}`}>
-          {" "}
           {/* <p
             onMouseEnter={(e) => animateArrowButton(e)}
             onMouseLeave={(e) => animateArrowButton(e)}
@@ -318,7 +373,7 @@ export default function Home() {
           </div>
         </Link>
       </div>
-      {elementsToReveal && <ScrollReveal elements={elementsToReveal} />}
+      {/* {elementsToReveal && <ScrollReveal elements={elementsToReveal} />} */}
     </>
   );
 }

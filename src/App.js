@@ -5,7 +5,7 @@ import { LanguageProvider } from "./utils/LanguageContext";
 import { ThemeProvider } from "./utils/ThemeContext";
 import { ViewportProvider } from "./utils/ViewportContext";
 
-import Logo from "./components/Logo";
+// import Logo from "./components/Logo";
 import Menu from "./navigation/Menu";
 import Footer from "./navigation/Footer";
 import Home from "./pages/Home";
@@ -36,7 +36,7 @@ export default function App() {
       <LanguageProvider>
         <ViewportProvider>
           <HashRouter>
-            <Logo />
+            {/* <Logo /> */}
             <Menu />
             <Routes>
               <Route path="/" element={<Home />} />
@@ -44,7 +44,7 @@ export default function App() {
               <Route path="/projects" element={<Projects />} />
               <Route path="/contact" element={<Contact />} />
             </Routes>
-            {/* <Footer /> */}
+            <Footer />
           </HashRouter>
         </ViewportProvider>
       </LanguageProvider>

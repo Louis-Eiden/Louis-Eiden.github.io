@@ -98,7 +98,7 @@ export default function Menu() {
               : "menu"
             : menuState === "open"
             ? language === "german"
-              ? "schließen"
+              ? "menü"
               : "close"
             : language === "german"
             ? "menü"
@@ -183,8 +183,8 @@ export default function Menu() {
             className="menu_item download-button"
             to={
               language === "german"
-                ? "../assets/Lebenslauf.pdf"
-                : "../assets/CV.pdf"
+                ? "./assets/Lebenslauf.pdf"
+                : "./assets/CV.pdf"
             }
             onClick={() => {
               toggleMenu();

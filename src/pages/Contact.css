@@ -16,7 +16,11 @@
 #contact-form input,
 #contact-form input:active,
 #contact-form input:focus,
-#contact-form input:checked {
+#contact-form input:checked,
+#contact-form textarea,
+#contact-form textarea:active,
+#contact-form textarea:focus,
+#contact-form textarea:checked {
   font-size: 1.25rem;
   width: 100%;
   margin-bottom: 4rem;
@@ -66,7 +70,7 @@ body #contact-form input:-internal-autofill-selected {
 
 .contact-container .social_item {
   display: block;
-  margin: 0 2.5rem;
+  margin: 0 0.75rem;
   font-size: 1.5rem;
   transition: opacity 0.5s ease-out;
 }
@@ -82,4 +86,24 @@ body #contact-form input:-internal-autofill-selected {
 
 .contact-container .social_items:hover > .social_item:hover {
   opacity: 1;
+}
+
+@media (max-width: 1200px) {
+  #contact-form {
+    margin-top: 0;
+  }
+}
+@media (max-width: 600px) {
+  #contact-form {
+    width: 65%;
+  }
+
+  #contact-form p:last-child {
+    display: flex;
+    justify-content: center;
+  }
+
+  .contact-container .social_items {
+    margin: 1rem 0;
+  }
 }

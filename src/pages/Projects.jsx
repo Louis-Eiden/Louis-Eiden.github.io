@@ -1,8 +1,13 @@
 import React, { useRef, useEffect, useState, useContext } from "react";
-import { LanguageContext } from "../utils/LanguageContext.jsx";
 
-import worldtalesThumbnail from "../assets/projects/worldtales1.jpg";
-import emailThumbnail from "../assets/projects/email1.jpg";
+import { motion } from "framer-motion";
+
+import { LanguageContext } from "../utils/LanguageContext.jsx";
+import { useViewport } from "../utils/ViewportContext";
+
+import worldtalesThumbnail from "../assets/projects/WorldTales/worldtales-1.jpg";
+import worldtalesMobileThumbnail from "../assets/projects/WorldTales/worldtales-mobile-1.jpg";
+import emailThumbnail from "../assets/projects/E-Mail/email1.jpg";
 import networkThumbnail from "../assets/projects/network1.jpg";
 import playitThumbnail from "../assets/projects/PlayIt1full.jpg";
 // import gameoneThumbnail from "../assets/projects/gameone1.jpg";
@@ -27,6 +32,13 @@ export default function Projects() {
   const sliderContainerRef = useRef(null);
   const { language } = useContext(LanguageContext);
 
+  const { width } = useViewport();
+  const mobile_breakpoint = 480;
+  let isMobile = width <= mobile_breakpoint;
+
+  // -------------------- ------------ ------------------ //
+
+  // ------------------- Projects Slider ---------------- //
   const observerOptions = {
     root: null,
     rootMargin: "0px",
@@ -62,7 +74,9 @@ export default function Projects() {
   //   }
   // };
 
-  // ------------- Update Arrow when scrolling --------------- //
+  // ---------------------- ------------- -------------------- //
+
+  // ------------- Arrow Animation --------------- //
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollTop = document.documentElement.scrollTop;
@@ -74,9 +88,11 @@ export default function Projects() {
           : "projects_slider";
 
       setSection(nextSection);
+      console.log(nextSection);
 
       if (nextSection === "projects_slider") {
         setArrowDirection("up");
+        console.log(arrowDirection);
       } else {
         setArrowDirection((prevArrowDirection) =>
           prevArrowDirection === "" ? "" : "down"
@@ -108,6 +124,7 @@ export default function Projects() {
       prevArrowState === "enter" ? "leave" : "enter"
     );
   };
+  // ---------------------- ------------- -------------------- //
 
   return (
     <>
@@ -119,16 +136,20 @@ export default function Projects() {
                 key={index}
                 id={`project-${index}`}
                 className={`project ${index === activeIndex ? "active" : ""}`}
-                style={{ backgroundImage: `url(${data.img})` }}
+                style={{
+                  backgroundImage: isMobile
+                    ? `url(${data.mobile_img})`
+                    : `url(${data.desktop_img})`,
+                }}
                 // onClick={(e) => scrollIntoView(e)}
               >
-                <iframe
+                {/* <iframe
                   title={`project-iframe-${index}`}
                   src={data.url}
                   width="100%"
                   height="100%"
                   className="project-iframe"
-                ></iframe>
+                ></iframe> */}
               </div>
             ))}
           </div>
@@ -142,28 +163,35 @@ export default function Projects() {
               }`}
             >
               {index === activeIndex && (
-                <div className="description">
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html:
-                        language === "english" ? data.text_en : data.text_de,
-                    }}
-                  />
-                </div>
+                <>
+                  <motion.div
+                    initial={{ opacity: 0, x: isMobile ? -100 : 100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 1 }}
+                    className="description"
+                  >
+                    <p
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          language === "english" ? data.text_en : data.text_de,
+                      }}
+                    />
+                  </motion.div>
+                </>
               )}
             </div>
           ))}
         </section>
-        <div className="arrow_container">
-          <p
+        <div className={`arrow_container ${arrowDirection}`}>
+          {/* <p
             onMouseEnter={animateArrowButton}
             onMouseLeave={animateArrowButton}
             onClick={scrollToNextSection}
           >
             {arrowDirection === "up" ? "to the top" : "explore more"}
-          </p>
+          </p> */}
           <div
-            className={`arrow ${arrowState} ${arrowDirection}`}
+            className={`arrow ${arrowState}`}
             onMouseEnter={animateArrowButton}
             onMouseLeave={animateArrowButton}
             onClick={scrollToNextSection}
@@ -178,18 +206,24 @@ const projectData = [
   // Webapps
   {
     Name: "Worldtales",
-    img: worldtalesThumbnail,
+    desktop_img: worldtalesThumbnail,
+    mobile_img: worldtalesMobileThumbnail,
     url: "https://worldtales.github.io/frontend/",
     text_en:
-      "WorldTales is a PWA (Progressive Web App) written as a SPA (Single Page Application). <br />" +
-      "The Frontend is built with React and the Backend written with Django. <br />" +
+      "<a href='https://worldtales.github.io/frontend/' class='timeline-link'>WorldTales</a>&#129133; </ br>" +
+      "is a PWA (Progressive Web App) written as a SPA (Single Page Application). </ br>" +
+      "The Frontend is built with React and the Backend written with Django. </ br>" +
       "It's a platform for people from around the world to share their favorite tales and stories.",
-    text_de: "",
+    text_de:
+      "<a href='https://worldtales.github.io/frontend/' class='timeline-link'>WorldTales</a>&#129133; </ br>" +
+      "ist eine PWA (Progressive Web App), die als SPA (Single Page Application) geschrieben wurde. </ br>" +
+      "Das Frontend ist mit React erstellt und das Backend mit Django. </ br>" +
+      "Es ist eine Plattform für Menschen aus der ganzen Welt, um ihre Lieblingsgeschichten und Erzählungen zu teilen.",
   },
   {
     Name: "Email",
     img: emailThumbnail,
-    text_en: "test22",
+    text_en: "",
     text_de: "",
   },
   {

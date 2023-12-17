@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { useScreenSize } from "../utils/useScreenSize";
 // React Icons
 import { IconContext } from "react-icons";
 import * as FaIcons from "react-icons/fa";
@@ -12,13 +11,9 @@ import "./SocialButtons.css";
 
 // -------------------- SocialButtons component -------------------- //
 export default function SocialButtons() {
-  const { isMobile } = useScreenSize();
-
   // -------------------- Render The Social Buttons Component -------------------- //
   return (
-    <IconContext.Provider
-      value={{ className: "social-icon", size: isMobile ? "25" : "25" }}
-    >
+    <IconContext.Provider value={{ className: "social-icon", size: "25" }}>
       <div className="social_items">
         <Link className="social_item" to="LinkedIn">
           <FaIcons.FaLinkedin id="linkedin" />

@@ -1,10 +1,12 @@
 .footer_container {
   position: relative;
-  height: 700px;
-  padding-top: 6rem;
+  display: grid;
+  grid-template-columns: 0.25fr 1fr;
+  grid-template-rows: repeat(1, 1fr);
+  justify-items: center;
+  height: min-content;
   background-color: var(--text-color);
   color: var(--footer-text-color);
-  /* Set text-fill-color to transparent to make the font color match the underlying div */
 }
 
 .footer_logo {
@@ -12,20 +14,22 @@
 }
 
 .footer_menu_items {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  margin: 1.5rem 0;
 }
 
 .footer_menu_items .menu_item {
   cursor: pointer;
   display: block;
-  margin: 0 6rem;
+  padding: 0;
+  margin: 0;
   position: relative;
   color: inherit;
   font-weight: 500;
   font-size: 2rem;
+  line-height: 100px;
   transition: opacity 0.5s ease-out;
+  margin: 0 2.5rem;
 }
 
 .footer_container .footer_menu_items:hover > .menu_item {
@@ -37,16 +41,19 @@
 }
 
 .footer_container .social_items {
-  position: absolute;
-  margin: 2rem 19rem;
-  right: 0;
+  margin: 1.5rem 0;
+  width: 100%;
+  height: min-content;
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: space-around;
 }
 
 .footer_container .social_item {
-  display: block;
-  margin: 2.5rem 0;
-  font-size: 1.5rem;
+  margin: 0 2.5rem;
+  font-size: 2rem;
   transition: opacity 0.5s ease-out;
+  line-height: 100px;
 }
 
 .footer_container .social_item svg {
@@ -60,4 +67,35 @@
 
 .footer_container .social_items:hover > .social_item:hover {
   opacity: 1;
+}
+
+@media (max-width: 784px) {
+  .footer_container {
+    height: min-content;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(1, 1fr);
+    align-items: end;
+  }
+  .footer_menu_item {
+    line-height: 125px;
+    margin: unset;
+  }
+  .footer_menu_items::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 90%;
+    background-color: white;
+    transform: translate(-50%, -50%);
+  }
+  .footer_container .social_item {
+    margin: unset;
+  }
+  .footer_container .social_items {
+    grid-auto-flow: row;
+    justify-content: center;
+    transform: translateY(2.5px);
+  }
 }

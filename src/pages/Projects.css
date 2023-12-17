@@ -12,7 +12,7 @@
 #projects_slider {
   scroll-snap-type: x proximity;
   overflow-x: auto;
-  padding: 0 50%;
+  /* padding: 0 50%; */
   /* WebKit browsers (Safari, Chrome) */
   -webkit-mask-image: linear-gradient(
     to right,
@@ -36,16 +36,25 @@
   flex-direction: row;
   align-items: center;
 }
+
+.project:first-child {
+  margin-left: 35rem;
+}
+.project:last-child {
+  margin-right: 35rem;
+}
+
 .project {
   background-size: cover;
   background-position: center;
+  /* object-fit: cover; */
   opacity: 0.5;
   flex: 0 0 auto;
   margin: 0 10rem;
   scroll-snap-align: center;
-  height: 25.5rem;
-  width: 45rem;
-  scale: 0.9;
+  width: 800px;
+  height: 450px;
+  scale: 0.75;
   /* border: var(--border-small); */
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: opacity 0.5s ease-out, scale 0.5s ease-out;
@@ -81,10 +90,104 @@
   align-items: center;
 }
 
+.project-details {
+  display: flex;
+  justify-content: center;
+}
+
 .description {
-  width: 700px;
+  width: 750px;
   font-size: 20px;
   margin-left: 260px;
   color: var(--text-color);
-  /* text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+  transform: translateY(-50%);
+}
+
+.project-img {
+  width: 250px;
+}
+
+@media (max-width: 1440px) {
+  .project {
+    /* object-fit: cover; */
+    width: 560px;
+    height: 315px;
+    margin: 0 5rem;
+  }
+
+  .project:first-child {
+    margin-left: 25rem;
+  }
+  .project:last-child {
+    margin-right: 25rem;
+  }
+
+  .project.active {
+    scale: 1;
+  }
+}
+
+@media (max-width: 1200px) {
+  #project_details {
+    justify-content: center;
+  }
+  .description {
+    margin-left: unset;
+  }
+}
+
+@media (max-width: 1024px) {
+  .project {
+    /* object-fit: cover; */
+    width: 400px;
+    height: 225px;
+    margin: 0 2.5rem;
+  }
+  .description {
+    width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .project {
+    width: 320px;
+    height: 180px;
+    margin: 0 1.5rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .description {
+    width: 75%;
+  }
+
+  .project:first-child {
+    margin-left: 15rem;
+  }
+  .project:last-child {
+    margin-right: 15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project {
+    height: 320px;
+    width: 180px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: 0 2.5rem;
+  }
+
+  .project:first-child {
+    margin-left: 10rem;
+  }
+  .project:last-child {
+    margin-right: 10rem;
+  }
+}
+@media (max-width: 375px) {
+  .projects_container .arrow {
+    display: block;
+  }
 }
