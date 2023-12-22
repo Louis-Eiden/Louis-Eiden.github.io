@@ -220,7 +220,7 @@ const timelineData = [
     title_en: "Work and Travel",
     title_de: "Auslandsaufenthalt",
     text_en:
-      "Southeast Asia and New Zealand" +
+      "Southeast Asia and New Zealand - " +
       "Engaged in diverse job opportunities for several months on " +
       "farms and other work settings, contributing to the local " +
       "communities while gaining valuable life experiences. " +
@@ -232,7 +232,7 @@ const timelineData = [
       "deeper appreciation for global diversity and cultivate " +
       "intercultural connections that have enriched my worldview.",
     text_de:
-      "Südostasien und Neuseeland" +
+      "Südostasien und Neuseeland - " +
       "Während meines Aufenthalts in Südostasien und Neuseeland " +
       "habe ich über mehrere Monate hinweg vielfältige " +
       "Tätigkeiten auf Farmen und in anderen Arbeitsumgebungen " +
@@ -388,7 +388,7 @@ const timelineData = [
     title_en:
       "Software Developer Training | Harvard's CS50 Course and Project Realization",
     title_de:
-      "Software Entwickler Schulung | Harvard's CS50 Kurs und zusätzliche Projecte",
+      "Software Entwickler Schulung | Harvard's CS50 Kurs <br />und zusätzliche Projekte",
     text_en:
       "I completed an intensive Web Developer Training through" +
       "Harvard's renowned CS50 Course, gaining comprehensive" +
