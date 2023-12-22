@@ -21,8 +21,6 @@ const ProgressBar = ({ targetPercentage, title, icon }) => {
   const progressBarRef = useRef(null);
 
   useEffect(() => {
-    console.log(isMobile);
-    console.log(max_size);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

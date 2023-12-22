@@ -115,7 +115,7 @@ export default function Home() {
   return (
     <>
       <motion.div
-        initial={{ opacity: 0, x: 20 }}
+        initial={{ opacity: 0, x: -20 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
         className="logo"
@@ -125,8 +125,8 @@ export default function Home() {
       <div className="home_container">
         <section id="home">
           <motion.div
-            initial={{ opacity: 0, y: -50, x: isMobile ? -100 : 100 }}
-            whileInView={{ opacity: 1, y: -50, x: 0 }}
+            initial={{ opacity: 0, y: -10, x: isMobile ? -100 : 100 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             className="summary"
           >

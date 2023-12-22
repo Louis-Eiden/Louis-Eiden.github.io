@@ -70,11 +70,9 @@ export default function Projects() {
           : "projects_slider";
 
       setSection(nextSection);
-      console.log(nextSection);
 
       if (nextSection === "projects_slider") {
         setArrowDirection("up");
-        console.log(arrowDirection);
       } else {
         setArrowDirection((prevArrowDirection) =>
           prevArrowDirection === "" ? "" : "down"
@@ -288,14 +286,14 @@ const projectData = [
     desktop_img: "assets/projects/portfolio-template/portfolio-template-1.jpg",
     mobile_img:
       "assets/projects/portfolio-template/portfolio-template-mobile-1.jpg",
-    url: "https://louis-eiden.github.io/",
+    url: "https://louis-eiden.github.io/Portfolio-1/",
 
     text_en:
-      "A portfolio <a href='assets/projects/Template-2/index.html' class='link'>template</a><span class='link-arrow'>&#129133;</span> crafted utilizing HTML, CSS, JavaScript, SwiperJS, and ScrollReveal. " +
+      "A portfolio <a href='https://louis-eiden.github.io/Portfolio-1/' class='link'>template</a><span class='link-arrow'>&#129133;</span> crafted utilizing HTML, CSS, JavaScript, SwiperJS, and ScrollReveal. " +
       "Explore the showcase of skills and projects in a visually appealing and interactive layout. " +
       "This template reflects my proficiency in web development and design.",
     text_de:
-      "Ein <a href='assets/projects/Template-2/index.html' class='link'>Portfolio-Template</a><span class='link-arrow'>&#129133;</span> erstellt mit HTML, CSS, JavaScript, SwiperJS und ScrollReveal. " +
+      "Ein <a href='https://louis-eiden.github.io/Portfolio-1/' class='link'>Portfolio-Template</a><span class='link-arrow'>&#129133;</span> erstellt mit HTML, CSS, JavaScript, SwiperJS und ScrollReveal. " +
       "Erkunde die Präsentation von Fähigkeiten und Projekten in einem visuell ansprechenden " +
       "und interaktiven Layout. Diese Vorlage spiegelt meine Kompetenz in der Webentwicklung " +
       "und im Design wieder.",

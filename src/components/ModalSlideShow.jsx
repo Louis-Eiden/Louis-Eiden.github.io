@@ -17,7 +17,6 @@ const ModalSlideShow = forwardRef(({ imagesProp }, ref) => {
   Images = imagesProp || Images; // Use the prop if provided, otherwise use the default
 
   const openModal = () => {
-    console.log("open");
     setCurrentIndex(0);
     setIsModalOpen(true);
   };

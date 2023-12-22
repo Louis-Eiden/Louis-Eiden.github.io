@@ -1,11 +1,10 @@
 .interface_button {
   position: absolute;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
-  /* top: 0; */
   top: calc(5% + 60px - 3px);
-  /* transform: translateY(50%); */
+  transform: translateY(50%);
   right: 25%;
   width: 100%;
   /* margin: 5% 25% 0 0; */

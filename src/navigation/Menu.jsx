@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 import { LanguageContext } from "../utils/LanguageContext";
 import { ThemeContext } from "../utils/ThemeContext";
+import { useViewport } from "../utils/ViewportContext";
 
 import SocialButtons from "./SocialButtons";
 
@@ -19,6 +20,11 @@ export default function Menu() {
   const [menuState, setMenuState] = useState("");
   const [menuButtonState, setMenuButtonState] = useState("");
   const { language, setLanguage } = useContext(LanguageContext);
+
+  const { width } = useViewport();
+  const mobile_breakpoint = 480;
+  let isMobile = width <= mobile_breakpoint;
+
   const { theme, setTheme } = useContext(ThemeContext);
 
   // Theme changes
@@ -132,7 +138,6 @@ export default function Menu() {
             {theme === "dark" ? (
               <FiSun
                 onClick={() => {
-                  console.log("clicked");
                   setTheme("bright");
                 }}
               />
