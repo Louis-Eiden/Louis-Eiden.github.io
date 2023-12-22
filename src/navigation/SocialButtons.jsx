@@ -15,19 +15,25 @@ export default function SocialButtons() {
   return (
     <IconContext.Provider value={{ className: "social-icon", size: "25" }}>
       <div className="social_items">
-        <Link className="social_item" to="LinkedIn">
+        <Link
+          className="social_item"
+          to="https://www.linkedin.com/in/louis-eiden-6a4852188/"
+        >
           <FaIcons.FaLinkedin id="linkedin" />
         </Link>
-        <Link className="social_item" to="figma">
+        <Link className="social_item" to="https://www.figma.com/@LouisEiden">
           <FaIcons.FaFigma id="figma" />
         </Link>
-        <Link className="social_item" to="github">
+        <Link className="social_item" to="https://github.com/Louis-Eiden">
           <FaIcons.FaGithub id="github" />
         </Link>
-        <Link className="social_item" to="Youtube">
+        <Link
+          className="social_item"
+          to="https://www.youtube.com/@louiseiden3898"
+        >
           <FaIcons.FaYoutube id="youtube" />
         </Link>
-        <Link className="social_item" to="mail">
+        <Link className="social_item" mailto="eidenlouis.mt@gmail.com">
           <FaIcons.FaEnvelope id="mail" />
         </Link>
       </div>

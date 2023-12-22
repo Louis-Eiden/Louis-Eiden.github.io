@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import Logo from "../components/Logo";
+// import Logo from "../components/Logo";
 
 import { LanguageContext } from "../utils/LanguageContext.jsx";
 import { useViewport } from "../utils/ViewportContext";
@@ -23,7 +23,7 @@ import "./Home.css";
 
 export default function Home() {
   const [arrowState, setArrowState] = useState("");
-  const [leftArrowState, setLeftArrowState] = useState("");
+  // const [leftArrowState, setLeftArrowState] = useState("");
   const [arrowDirection, setArrowDirection] = useState("");
   const [section, setSection] = useState("");
 
@@ -100,10 +100,10 @@ export default function Home() {
       setArrowState((prevArrowState) =>
         prevArrowState === "enter" ? "leave" : "enter"
       );
-    } else {
-      setLeftArrowState((prevLeftArrowState) =>
-        prevLeftArrowState === "enter" ? "leave" : "enter"
-      );
+      // } else {
+      //   setLeftArrowState((prevLeftArrowState) =>
+      //     prevLeftArrowState === "enter" ? "leave" : "enter"
+      //   );
     }
   };
 
@@ -114,7 +114,14 @@ export default function Home() {
 
   return (
     <>
-      <Logo />
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1 }}
+        className="logo"
+      >
+        <Link to="/">L/E</Link>
+      </motion.div>
       <div className="home_container">
         <section id="home">
           <motion.div
@@ -350,28 +357,31 @@ export default function Home() {
           >
             {section}
           </p> */}
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 20, rotate: -135 }}
+            animate={{ opacity: 1, y: [20, -20, 0] }}
+            transition={{ duration: 1 }}
             className={`arrow ${arrowState}`}
             onMouseEnter={(e) => animateArrowButton(e)}
             onMouseLeave={(e) => animateArrowButton(e)}
             onClick={scrollToNextSection}
-          ></div>
+          ></motion.div>
         </div>
-        <Link to="/projects">
+        {/*<Link to="/projects">
           <div className="arrow_left_container">
-            {/* <p
+            <p
               onMouseEnter={(e) => animateArrowButton(e)}
               onMouseLeave={(e) => animateArrowButton(e)}
             >
               projects
-            </p> */}
+            </p>
             <div
               className={`arrow_left ${leftArrowState}`}
               onMouseEnter={(e) => animateArrowButton(e)}
               onMouseLeave={(e) => animateArrowButton(e)}
             ></div>
           </div>
-        </Link>
+        </Link> */}
       </div>
       {/* {elementsToReveal && <ScrollReveal elements={elementsToReveal} />} */}
     </>

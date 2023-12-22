@@ -209,7 +209,7 @@ html.dark .details.active .text {
   list-style-type: disc;
 }
 
-.about_container .timeline-link {
+.details .timeline-link {
   text-decoration: underline;
   cursor: pointer;
   opacity: 0;
@@ -248,6 +248,14 @@ html.dark .details.active .text {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease-out, color 1s ease-out;
+}
+
+.text_overlay.close .timeline-link {
+  opacity: 0;
+}
+
+.text_overlay.open .timeline-link {
+  opacity: 1;
 }
 
 html .text_overlay.open {

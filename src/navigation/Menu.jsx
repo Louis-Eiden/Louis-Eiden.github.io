@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
+import { motion } from "framer-motion";
+
 import { LanguageContext } from "../utils/LanguageContext";
 import { ThemeContext } from "../utils/ThemeContext";
 
 import SocialButtons from "./SocialButtons";
-
-import Lebenslauf from "../assets/Lebenslauf.pdf";
-import CV from "../assets/CV.pdf";
 
 import { FiSun, FiMoon } from "react-icons/fi";
 import { MdDownload } from "react-icons/md";
@@ -91,7 +90,12 @@ export default function Menu() {
           toggleMenu();
         }}
       >
-        <div className="menu_button_text">
+        <motion.div
+          initial={{ opacity: 0, x: 0 }}
+          animate={{ opacity: 1, x: [-20, 0] }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="menu_button_text"
+        >
           {menuState === ""
             ? language === "german"
               ? "menü"
@@ -103,11 +107,24 @@ export default function Menu() {
             : language === "german"
             ? "menü"
             : "menu"}
-        </div>
-        <div className="menu_square">
-          <div></div>
-          <div></div>
-        </div>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, x: 20, rotate: 45 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="menu_square"
+        >
+          <motion.div
+            initial={{ width: 30, height: 30 }}
+            animate={{ width: [30, 50, 30], height: [30, 50, 30] }}
+            transition={{ duration: 1, delay: 0.5 }}
+          ></motion.div>
+          <motion.div
+            initial={{ width: 30, height: 30 }}
+            animate={{ width: [30, 2.5, 30], height: [30, 2.5, 30] }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          ></motion.div>
+        </motion.div>
       </div>
       <nav className={`menu ${menuState} ${theme === "dark" ? "dark" : ""}`}>
         <div className="interface_button">
@@ -179,12 +196,10 @@ export default function Menu() {
           >
             {language === "german" ? "kontakt" : "contact"}
           </Link>
-          <Link
+          <a
             className="menu_item download-button"
-            to={
-              language === "german"
-                ? "./assets/Lebenslauf.pdf"
-                : "./assets/CV.pdf"
+            href={
+              language === "german" ? "assets/Lebenslauf.pdf" : "assets/CV.pdf"
             }
             onClick={() => {
               toggleMenu();
@@ -193,7 +208,7 @@ export default function Menu() {
           >
             {language === "german" ? "lebenslauf" : "cv"}
             <MdDownload className="download-icon" />
-          </Link>
+          </a>
         </div>
         <SocialButtons />
       </nav>

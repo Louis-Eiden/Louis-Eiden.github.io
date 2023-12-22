@@ -82,13 +82,23 @@ a:active {
   color: var(--text-color);
 }
 
-.timeline-link {
+.timeline-link,
+.link {
   text-decoration: underline;
   cursor: pointer;
   opacity: 1;
   transition: opacity 2s ease-out, color 0.5s ease-out;
 }
-.timeline-link:hover {
+.timeline-link + .link-arrow,
+.link + .link-arrow {
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 2s ease-out, color 0.5s ease-out;
+}
+.timeline-link:hover,
+.link:hover,
+.timeline-link:hover + .link-arrow,
+.link:hover + .link-arrow {
   color: black !important;
 }
 
@@ -139,7 +149,6 @@ ul {
 
 /* ------------------- Logo ------------------- */
 .logo {
-  text-decoration: none;
   z-index: 10;
   position: absolute;
   top: 5%;
@@ -147,6 +156,9 @@ ul {
   font-size: 120px;
   color: var(--text-color);
   /* text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+}
+.logo a {
+  text-decoration: none;
 }
 /* ------------------ Reaveal Animation --------------- */
 .reveal {

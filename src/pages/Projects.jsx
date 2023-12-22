@@ -5,20 +5,6 @@ import { motion } from "framer-motion";
 import { LanguageContext } from "../utils/LanguageContext.jsx";
 import { useViewport } from "../utils/ViewportContext";
 
-import worldtalesThumbnail from "../assets/projects/WorldTales/worldtales-1.jpg";
-import worldtalesMobileThumbnail from "../assets/projects/WorldTales/worldtales-mobile-1.jpg";
-import emailThumbnail from "../assets/projects/E-Mail/email1.jpg";
-import networkThumbnail from "../assets/projects/network1.jpg";
-import playitThumbnail from "../assets/projects/PlayIt1full.jpg";
-// import gameoneThumbnail from "../assets/projects/gameone1.jpg";
-import wachsdesignThumbnail from "../assets/projects/wachsdesign1.jpg";
-// import itlutzThumbnail from "../assets/projects/itlutz1.jpg";
-// import template1Thumbnail from "../assets/projects/template1.jpg";
-import template2Thumbnail from "../assets/projects/template2.jpg";
-// import portfolio1Thumbnail from "../assets/projects/portfolio1.jpg";
-import prototype1Thumbnail from "../assets/projects/prototype1.jpg";
-// import abbrandwächterThumbnail from "../assets/projects/abbrandwächter1.jpg";
-
 import "../App.css";
 import "./Projects.css";
 
@@ -35,8 +21,6 @@ export default function Projects() {
   const { width } = useViewport();
   const mobile_breakpoint = 480;
   let isMobile = width <= mobile_breakpoint;
-
-  // -------------------- ------------ ------------------ //
 
   // ------------------- Projects Slider ---------------- //
   const observerOptions = {
@@ -74,8 +58,6 @@ export default function Projects() {
   //   }
   // };
 
-  // ---------------------- ------------- -------------------- //
-
   // ------------- Arrow Animation --------------- //
   useEffect(() => {
     const handleScroll = () => {
@@ -109,7 +91,7 @@ export default function Projects() {
     return () => {
       document.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [arrowDirection]);
 
   const scrollToNextSection = () => {
     const nextSectionElement = document.getElementById(section);
@@ -124,7 +106,6 @@ export default function Projects() {
       prevArrowState === "enter" ? "leave" : "enter"
     );
   };
-  // ---------------------- ------------- -------------------- //
 
   return (
     <>
@@ -203,40 +184,62 @@ export default function Projects() {
 }
 
 const projectData = [
-  // Webapps
+  // ----------------------------- Webapps ----------------------------- //
   {
     Name: "Worldtales",
-    desktop_img: worldtalesThumbnail,
-    mobile_img: worldtalesMobileThumbnail,
+    desktop_img: "assets/projects/WorldTales/worldtales-1.jpg",
+    mobile_img: "assets/projects/WorldTales/worldtales-mobile-1.jpg",
     url: "https://worldtales.github.io/frontend/",
+    youtube: "https://www.youtube.com/watch?v=4pRY0_Y7Jb0",
     text_en:
-      "<a href='https://worldtales.github.io/frontend/' class='timeline-link'>WorldTales</a>&#129133; </ br>" +
-      "is a PWA (Progressive Web App) written as a SPA (Single Page Application). </ br>" +
-      "The Frontend is built with React and the Backend written with Django. </ br>" +
-      "It's a platform for people from around the world to share their favorite tales and stories.",
+      "<a href='https://worldtales.github.io/frontend/' class='link'>WorldTales</a><span class='link-arrow'>&#129133;</span> " +
+      "is a PWA (Progressive Web App) written as a SPA (Single Page Application). " +
+      "The Frontend is built with React and the Backend written with Django. " +
+      "It's a platform for people from around the world to share their favorite tales and stories. " +
+      "The backend is hosted on Pythonanywhere and the frontend via Github Pages. " +
+      "Here is the <a href='https://github.com/Louis-Eiden/WorldTales' class='link'>GitHub-repository</a><span class='link-arrow'>&#129133;</span>",
     text_de:
-      "<a href='https://worldtales.github.io/frontend/' class='timeline-link'>WorldTales</a>&#129133; </ br>" +
-      "ist eine PWA (Progressive Web App), die als SPA (Single Page Application) geschrieben wurde. </ br>" +
-      "Das Frontend ist mit React erstellt und das Backend mit Django. </ br>" +
-      "Es ist eine Plattform für Menschen aus der ganzen Welt, um ihre Lieblingsgeschichten und Erzählungen zu teilen.",
+      "<a href='https://worldtales.github.io/frontend/' class='link'>WorldTales</a><span class='link-arrow'>&#129133;</span> " +
+      "ist eine PWA (Progressive Web App), die als SPA (Single Page Application) geschrieben wurde. " +
+      "Das Frontend ist mit React erstellt und das Backend mit Django. " +
+      "Es ist eine Plattform für Menschen aus der ganzen Welt, um ihre Lieblingsgeschichten und Erzählungen zu teilen. " +
+      "Das Backend ist auf PythonAnywhere gehostet und das Frontend über GitHub Pages verfügbar. " +
+      "Hier die <a href='https://github.com/Louis-Eiden/WorldTales' class='link'>GitHub-Repository</a><span class='link-arrow'>&#129133;</span>",
   },
   {
     Name: "Email",
-    img: emailThumbnail,
-    text_en: "",
-    text_de: "",
+    desktop_img: "assets/projects/e-mail/email-3.jpg",
+    // mobile_img: "assets/projects/E-Mail/email-mobile-1.jpg",
+    text_en:
+      "Introducing Email - a dynamic messaging web app developed as my third project in Harvard's CS50Web programming course. " +
+      "Crafted with Django and JavaScript, it showcases advanced web development skills " +
+      "and seamless integration for a user-friendly experience. Explore the features and " +
+      "design that reflect my commitment to delivering robust web solutions.",
+    text_de:
+      "Email – einer lebendigen Messaging-Webanwendung, entstanden als mein drittes Projekt " +
+      "im CS50Web-Programmierkurs an der Harvard-Universität. Entwickelt mit Django und JavaScript, " +
+      "demonstriert sie meine fortgeschrittenen Fähigkeiten in der Webentwicklung " +
+      "und gewährleistet eine nahtlose Integration für eine benutzerfreundliche Erfahrung.",
   },
-  {
-    Name: "Social",
-    img: networkThumbnail,
-    text_en: "",
-    text_de: "",
-  },
+  // {
+  //   Name: "Social",
+  //   desktop_img: networkThumbnail,
+  //   // mobile_img: networkMobileThumbnail,
+  //   text_en: "",
+  //   text_de: "",
+  // },
   {
     Name: "PlayIt",
-    img: playitThumbnail,
-    text_en: "",
-    text_de: "",
+    desktop_img: "assets/projects/playit/playit-1.jpg",
+    mobile_img: "assets/projects/playit/playit-mobile-1.jpg",
+    text_en:
+      "Introducing <a href='https://louis-eiden.github.io/PlayIt/' class='link'>PlayIt</a><span class='link-arrow'>&#129133;</span>, a soundboard application crafted with HTML, CSS, and JavaScript. " +
+      "With PlayIt, you have the flexibility to assign songs from your phone or computer, or even record your own audio clips. " +
+      "Explore the interactive features and enjoy a dynamic audio experience with this project.",
+    text_de:
+      "Entdecke <a href='https://louis-eiden.github.io/PlayIt/' class='link'>PlayIt</a><span class='link-arrow'>&#129133;</span>, eine Soundboard-Anwendung, entwickelt mit HTML, CSS und JavaScript. " +
+      "Mit PlayIt kannst du Songs von deinem Smartphone oder Computer zuweisen oder sogar eigene Audioaufnahmen machen. " +
+      "Erlebe die interaktiven Funktionen und genieße eine dynamische Audioerfahrung mit diesem Projekt.",
   },
   // {
   //   Name: "GameOne",
@@ -244,13 +247,14 @@ const projectData = [
   //   text_en: "",
   //   text_de: "",
   // },
-  // Webdesigns
-  {
-    Name: "Wachsdesign",
-    img: wachsdesignThumbnail,
-    text_en: "",
-    text_de: "",
-  },
+  // ----------------------------- Webdesigns ----------------------------- //
+  // {
+  //   Name: "Wachsdesign",
+  //   desktop_img: "",
+  //   // mobile_img: "",
+  //   text_en: "",
+  //   text_de: "",
+  // },
   // {
   //   Name: "ITLutz",
   //   img: itlutzThumbnail,
@@ -265,28 +269,50 @@ const projectData = [
   // },
   {
     Name: "Website Template2",
-    img: template2Thumbnail,
-    text_en: "",
-    text_de: "",
+    desktop_img: "assets/projects/Template-2/template-2.jpg",
+    mobile_img: "assets/projects/Template-2/template-2-mobile-1.jpg",
+    url: "assets/projects/Template-2/index.html",
+    text_en:
+      "A website <a href='assets/projects/Template-2/index.html' class='link'>template</a><span class='link-arrow'>&#129133;</span> crafted with HTML, CSS, and JavaScript. " +
+      "It features a custom-made Parallax effect implemented using JavaScript. " +
+      "The graphics were created using Photoshop Version 22.4. " +
+      "Foto by Irina Iriser: <a href='https://www.pexels.com/de-de/foto/tilt-shift-lens-foto-von-blauen-blumen-673857/' class='link'>Source</a><span class='link-arrow'>&#129133;</span>",
+    text_de:
+      "Ein <a href='assets/projects/Template-2/index.html' class='link'>Website-Template</a><span class='link-arrow'>&#129133;</span>, geschrieben mit HTML, CSS und JavaScript. " +
+      "Verwendet einen Parallaxen-Effekt, der vollständig mit JavaScript erstellt wurde. " +
+      "Die Grafiken wurden mithilfe von Photoshop Version 22.4 erstellt. " +
+      "Foto von Irina Iriser: <a href='https://www.pexels.com/de-de/foto/tilt-shift-lens-foto-von-blauen-blumen-673857/' class='link'>Quelle</a><span class='link-arrow'>&#129133;</span>",
+  },
+  {
+    Name: "Portfolio Template",
+    desktop_img: "assets/projects/portfolio-template/portfolio-template-1.jpg",
+    mobile_img:
+      "assets/projects/portfolio-template/portfolio-template-mobile-1.jpg",
+    url: "https://louis-eiden.github.io/",
+
+    text_en:
+      "A portfolio <a href='assets/projects/Template-2/index.html' class='link'>template</a><span class='link-arrow'>&#129133;</span> crafted utilizing HTML, CSS, JavaScript, SwiperJS, and ScrollReveal. " +
+      "Explore the showcase of skills and projects in a visually appealing and interactive layout. " +
+      "This template reflects my proficiency in web development and design.",
+    text_de:
+      "Ein <a href='assets/projects/Template-2/index.html' class='link'>Portfolio-Template</a><span class='link-arrow'>&#129133;</span> erstellt mit HTML, CSS, JavaScript, SwiperJS und ScrollReveal. " +
+      "Erkunde die Präsentation von Fähigkeiten und Projekten in einem visuell ansprechenden " +
+      "und interaktiven Layout. Diese Vorlage spiegelt meine Kompetenz in der Webentwicklung " +
+      "und im Design wieder.",
   },
   // {
-  //   Name: "Portfolio Template",
-  //   img: portfolio1Thumbnail,
+  //   Name: "Prototype",
+  //   desktop_img: "",
+  //   mobile_img: "",
   //   text_en: "",
   //   text_de: "",
   // },
-  {
-    Name: "Prototype",
-    img: prototype1Thumbnail,
-    text_en: "",
-    text_de: "",
-  },
-  // Apps
+  // ----------------------------- Apps ----------------------------- //
   // {
   //   Name: "Abbrandwächter",
-  //   img: abbrandwächterThumbnail,
+  //   // desktop_img: abbrandwächterThumbnail,
+  //   // mobile_img: abbrandwächterMobileThumbnail,
   //   text_en: "",
   //   text_de: "",
   // },
-  // Others
 ];

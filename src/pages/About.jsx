@@ -4,21 +4,16 @@ import ModalSlideShow from "../components/ModalSlideShow";
 import { LanguageContext } from "../utils/LanguageContext.jsx";
 import { useViewport } from "../utils/ViewportContext";
 
-import { ImArrowUpRight } from "react-icons/im";
-
 import "../App.css";
 import "./About.css";
-
-// // Define handleOpenModal outside the component
-// const handleOpenModal = () => {
-//   modalRef.current.openModal();
-// };
 
 export default function About() {
   const { language } = useContext(LanguageContext);
 
   const [textOverlay, setTextOverlay] = useState("close");
   const linkArrow = String.fromCodePoint(0x1f86d);
+
+  // -------------------- Modal Slideshow -------------------- //
 
   // Create a ref
   const modalRef = useRef();
@@ -45,9 +40,6 @@ export default function About() {
     const relativePath = key.replace(".", "./assets/tinyhouse");
     return relativePath;
   });
-  useEffect(() => {
-    console.log(TinyHouse);
-  }, [TinyHouse]);
 
   // -------------------- Timeline -------------------- //
   const [activeIndex, setActiveIndex] = useState(null);
@@ -215,13 +207,13 @@ const timelineData = [
     title_en: "Apprenticeship",
     title_de: "Ausbildung",
     text_en:
-      "Apprenticeship at the company <a href='http://www.itlutz.de/homepage/index.html' class='timeline-link'>Informationstechnik Lutz</a>&#129133; in Gehrweiler, Rhineland-Palatinate, Germany. " +
-      "Attended Vocational School <a href='https://bbs1-kl.de/' class='timeline-link'>BBS1-KL </a>in Kaiserslautern, Rhineland-Palatinate, Germany. " +
-      "More information about the profession <a class='timeline-link' href='https://www.dqr.de/dqr/shareddocs/qualifikationen-neu/en/Information-electronics-technician-m-f-equipment-and-systems-technology.html'>here</a>&#129133;",
+      "Apprenticeship at the company <a href='http://www.itlutz.de/homepage/index.html' class='timeline-link'>Informationstechnik Lutz</a><span class='link-arrow'>&#129133;</span> in Gehrweiler, Rhineland-Palatinate, Germany. " +
+      "Attended Vocational School <a href='https://bbs1-kl.de/' class='timeline-link'>BBS1-KL</a><span class='link-arrow'>&#129133; </span>in Kaiserslautern, Rhineland-Palatinate, Germany. " +
+      "More information about the profession <a class='timeline-link' href='https://www.dqr.de/dqr/shareddocs/qualifikationen-neu/en/Information-electronics-technician-m-f-equipment-and-systems-technology.html'>here</a><span class='link-arrow'>&#129133;</span>",
     text_de:
-      "Ausbildung bei der Firma <a href='http://www.itlutz.de/homepage/index.html' class='timeline-link'>Informationstechnik Lutz</a>&#129133; in Gehrweiler, Rheinland-Pfalz, Deutschland. " +
-      "Besuch der Berufsschule <a href='https://bbs1-kl.de/' class='timeline-link'>BBS1-KL </a> in Kaiserslautern, Rheinland-Pfalz, Deutschland." +
-      "Mehr informationen zum Berufsbild <a href='https://www.dqr.de/dqr/shareddocs/qualifikationen-neu/de/Informationselektroniker-Schwerpunkt-Geraete-Informations-und-Buerosystemtechnik-Informationselektronikerin-Schwerpunkt-Geraete-Informations-und-Buerosystemtechnik.html' class='timeline-link'>hier</a>&#129133;",
+      "Ausbildung bei der Firma <a href='http://www.itlutz.de/homepage/index.html' class='timeline-link'>Informationstechnik Lutz</a><span class='link-arrow'>&#129133;</span> in Gehrweiler, Rheinland-Pfalz, Deutschland. " +
+      "Besuch der Berufsschule <a href='https://bbs1-kl.de/' class='timeline-link'>BBS1-KL</a><span class='link-arrow'>&#129133; </span> in Kaiserslautern, Rheinland-Pfalz, Deutschland." +
+      "Mehr informationen zum Berufsbild <a href='https://www.dqr.de/dqr/shareddocs/qualifikationen-neu/de/Informationselektroniker-Schwerpunkt-Geraete-Informations-und-Buerosystemtechnik-Informationselektronikerin-Schwerpunkt-Geraete-Informations-und-Buerosystemtechnik.html' class='timeline-link'>hier</a><span class='link-arrow'>&#129133;</span>",
   },
   {
     year: "2015-2017",
@@ -260,9 +252,9 @@ const timelineData = [
     title_en: "Technical Diploma",
     title_de: "Fachhochschulreife",
     text_en:
-      "Completed technical studies at vocational school <a href='https://www.t1.bbslu.de/schulformen/berufsoberschule-bos-1/' class='timeline-link'>BOS1-LU </a>&#129133; in Ludwigshafen, Rhineland-Palatinate, Germany.",
+      "Completed technical studies at vocational school <a href='https://www.t1.bbslu.de/schulformen/berufsoberschule-bos-1/' class='timeline-link'>BOS1-LU</a><span class='link-arrow'>&#129133; </span> in Ludwigshafen, Rhineland-Palatinate, Germany.",
     text_de:
-      "Besuch der Berufsoberschule <a href='https://www.t1.bbslu.de/schulformen/berufsoberschule-bos-1/' class='timeline-link'>BOS1-LU </a>&#129133; in Ludwigshafen, Rheinland-Pfalz, Deutschland",
+      "Besuch der Berufsoberschule <a href='https://www.t1.bbslu.de/schulformen/berufsoberschule-bos-1/' class='timeline-link'>BOS1-LU</a><span class='link-arrow'>&#129133; </span> in Ludwigshafen, Rheinland-Pfalz, Deutschland",
   },
   {
     year: "2018-2019",
@@ -410,7 +402,7 @@ const timelineData = [
       "create dynamic and user-friendly websites, enhancing my" +
       "proficiency in HTML, CSS, JavaScript, and other relevant" +
       "frameworks. You can view my certificate " +
-      "<a href='https://courses.edx.org/certificates/63c81fbea7c349d2b11980685afac755' class='timeline-link'>here</a>&#129133;. ",
+      "<a href='https://courses.edx.org/certificates/63c81fbea7c349d2b11980685afac755' class='timeline-link'>here</a><span class='link-arrow'>&#129133;</span>. ",
     text_de:
       "Mit Harvard's renommiertem Web Development Kurs habe ich " +
       "umfassende Kenntnisse im Bereich Informatik und " +
@@ -426,7 +418,7 @@ const timelineData = [
       "benutzerfreundliche Websites zu erstellen. Dadurch habe " +
       "ich meine Fähigkeiten in HTML, CSS, JavaScript und anderen " +
       "relevanten Frameworks weiter ausgebaut. " +
-      "<a href='https://courses.edx.org/certificates/63c81fbea7c349d2b11980685afac755' class='timeline-link'>Hier</a>&#129133; " +
+      "<a href='https://courses.edx.org/certificates/63c81fbea7c349d2b11980685afac755' class='timeline-link'>Hier</a><span class='link-arrow'>&#129133;</span> " +
       "geht es zum Zertifikat",
   },
 ];
