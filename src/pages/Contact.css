@@ -1,0 +1,109 @@
+.contact-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#contact-form {
+  margin-top: 7.5rem;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+#contact-form input,
+#contact-form input:active,
+#contact-form input:focus,
+#contact-form input:checked,
+#contact-form textarea,
+#contact-form textarea:active,
+#contact-form textarea:focus,
+#contact-form textarea:checked {
+  font-size: 1.25rem;
+  width: 100%;
+  margin-bottom: 4rem;
+  border: none;
+  border-bottom: var(--border-small);
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent !important;
+  resize: none;
+}
+
+#contact-form input[type="text"] {
+  color: var(--text-color);
+}
+
+body #contact-form input:-internal-autofill-selected {
+  background-color: transparent !important;
+}
+
+#contact-form label {
+  color: var(--text-color);
+}
+
+#contact-form button {
+  all: unset;
+  font-size: 1.25rem;
+  border: var(--border-small);
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.75rem 2.5rem;
+  transition: background-color 0.5s ease-out, color 0.5s ease-out;
+}
+
+#contact-form button:hover {
+  background-color: var(--text-color);
+  color: white;
+}
+
+.contact-container .social_items {
+  display: flex;
+  position: absolute;
+  margin: 2.5rem 0;
+  bottom: 0;
+}
+
+.contact-container .social_item {
+  display: block;
+  margin: 0 0.75rem;
+  font-size: 1.5rem;
+  transition: opacity 0.5s ease-out;
+}
+
+.contact-container .social_item svg {
+  fill: var(--text-color);
+  visibility: visible;
+}
+
+.contact-container .social_items:hover > .social_item {
+  opacity: 0.25;
+}
+
+.contact-container .social_items:hover > .social_item:hover {
+  opacity: 1;
+}
+
+@media (max-width: 1200px) {
+  #contact-form {
+    margin-top: 0;
+  }
+}
+@media (max-width: 600px) {
+  #contact-form {
+    width: 65%;
+  }
+
+  #contact-form p:last-child {
+    display: flex;
+    justify-content: center;
+  }
+
+  .contact-container .social_items {
+    margin: 1rem 0;
+  }
+}

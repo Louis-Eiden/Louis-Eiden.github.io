@@ -1,0 +1,30 @@
+/* src/navigation/SocialButtons.css */
+
+.menu .social_items {
+  position: absolute;
+  min-width: 250px;
+  left: 50%;
+  transform: translate(-50%);
+  z-index: 100;
+  bottom: 2.5rem;
+  text-align: center;
+}
+
+.social_item {
+  margin: 0.75rem;
+  font-size: 1.5rem;
+  transition: opacity 0.5s ease-out;
+}
+
+.social_items:hover > .social_item {
+  opacity: 0.5;
+}
+
+.social_items:hover > .social_item:hover {
+  opacity: 1;
+}
+
+.social_item svg {
+  visibility: hidden;
+  fill: transparent;
+}
