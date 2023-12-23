@@ -125,7 +125,11 @@ export default function Home() {
       <div className="home_container">
         <section id="home">
           <motion.div
-            initial={{ opacity: 0, y: -10, x: isMobile ? -100 : 100 }}
+            initial={{
+              opacity: 0,
+              y: isMobile ? -50 : -10,
+              x: isMobile ? -100 : 100,
+            }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             className="summary"
