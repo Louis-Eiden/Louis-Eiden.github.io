@@ -266,6 +266,23 @@ const projectData = [
   //   text_de: "",
   // },
   {
+    Name: "Schwimmschule Waterproof",
+    desktop_img: "assets/projects/Waterproof/waterproof-1.jpg",
+    mobile_img: "assets/projects/Waterproof/waterproof-mobile-1.jpg",
+    url: "https://louis-eiden.github.io/Waterproof/",
+
+    text_en:
+      "This Swim School's website reflects my commitment to creating visually appealing, user-friendly, " +
+      "and interactive web experiences. From responsive design to seamless navigation and engaging animations, " +
+      "this project showcases my skills in HTML, CSS, JavaScript, JQuery, and ScrollReveal. " +
+      "Explore the website and take a virtual plunge into the world of <a href='https://louis-eiden.github.io/Waterproof/' class='link'>Waterproof</a><span class='link-arrow'>&#129133;</span> Swim School!",
+    text_de:
+      "Die Website wurde mit HTML, CSS und JavaScript erstellt, wobei jQuery und ScrollReveal " +
+      "für zusätzliche Interaktivität und ansprechende Animationen sorgen. Die Benutzeroberfläche wurde bewusst " +
+      "benutzerfreundlich gestaltet, um eine angenehme Erfahrung für alle Besucher zu gewährleisten." +
+      "Besuche die Webseite und tauche ein in die welt der <a href='https://louis-eiden.github.io/Waterproof/' class='link'>Waterproof</a><span class='link-arrow'>&#129133;</span> Schwimmschule.",
+  },
+  {
     Name: "Website Template2",
     desktop_img: "assets/projects/Template-2/template-2.jpg",
     mobile_img: "assets/projects/Template-2/template-2-mobile-1.jpg",
@@ -298,6 +315,7 @@ const projectData = [
       "und interaktiven Layout. Diese Vorlage spiegelt meine Kompetenz in der Webentwicklung " +
       "und im Design wieder.",
   },
+
   // {
   //   Name: "Prototype",
   //   desktop_img: "",

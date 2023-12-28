@@ -238,7 +238,7 @@ const timelineData = [
       "Tätigkeiten auf Farmen und in anderen Arbeitsumgebungen " +
       "ausgeübt, wodurch ich aktiv zur lokalen Gemeinschaft " +
       "beitrug und wertvolle Lebenserfahrungen sammelte. Während " +
-      "dieser bereichernden Reise hatte ich die Chance, mich in " +
+      "dieser bereichernden Reise hatte ich die Chance, in " +
       "verschiedene Kulturen einzutauchen und meine " +
       "Englischkenntnisse durch bedeutsame Interaktionen mit " +
       "Menschen aus unterschiedlichen Hintergründen zu " +
