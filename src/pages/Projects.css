@@ -1,6 +1,9 @@
+html:has(.projects_container) {
+  overflow: hidden;
+}
+
 .projects_container {
   width: 100vw;
-  /* overflow: hidden; */
 }
 .projects_container section {
   display: flex;
@@ -58,6 +61,11 @@
   /* border: var(--border-small); */
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: opacity 0.5s ease-out, scale 0.5s ease-out;
+  cursor: pointer;
+}
+
+.project.active:hover {
+  scale: 1.05;
 }
 
 .project.active {

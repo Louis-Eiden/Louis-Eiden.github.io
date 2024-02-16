@@ -1,24 +1,83 @@
+import React, { useState } from "react";
+import emailjs from "emailjs-com";
+
 import SocialButtons from "../navigation/SocialButtons";
 
 import "../App.css";
 import "./Contact.css";
 
 export default function Contact() {
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    // EmailJS params
+    const serviceId = "contact_service";
+    const templateId = "contact_template";
+    const publicKey = "n6xYr2qZ_V7YAohSU";
+
+    // EmailJS object with params
+    const emailParams = {
+      from_name: name,
+      from_email: email,
+      to_name: "Louis Eiden",
+      message: message,
+    };
+
+    // Send email
+    emailjs.send(serviceId, templateId, emailParams, publicKey)
+      .then((result) => {
+        console.log(result.text);
+        alert("Message sent successfully!", result);
+        setName("");
+        setEmail("");
+        setMessage("");
+      }) 
+      .catch((error) => {
+        console.log(error.text);
+        alert("Message failed to send!");
+      });
+  
+  }
+
   return (
     <>
       <div className="contact-container">
-        <form id="contact-form" action="">
+        <form id="contact-form" onSubmit={handleSubmit} className="" >
           <p>{/* <label htmlFor="name">name:</label> */}</p>
           <p>
-            <input id="Name" type="text" placeholder="name" />
+            <input 
+              id="Name" 
+              type="text" 
+              placeholder="name" 
+              value={name} 
+              onChange={(e) => setName(e.target.value)}
+            />
           </p>
           <p>{/* <label htmlFor="email">email:</label> */}</p>
           <p>
-            <input id="Email" type="text" placeholder="email" />
+            <input 
+              id="Email" 
+              type="text" 
+              placeholder="email" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              />
           </p>
           <p>{/* <label htmlFor="message">message:</label> */}</p>
           <p>
-            <textarea id="Message" type="text" placeholder="message" rows={4} />
+            <textarea 
+              id="Message" 
+              type="text" 
+              placeholder="message" 
+              rows={4} 
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              />
           </p>
           <p>
             <button type="submit">send</button>
