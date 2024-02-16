@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import emailjs from "emailjs-com";
+
+import { LanguageContext } from "../utils/LanguageContext.jsx";
 
 import SocialButtons from "../navigation/SocialButtons";
 
@@ -7,6 +9,8 @@ import "../App.css";
 import "./Contact.css";
 
 export default function Contact() {
+
+  const { language } = useContext(LanguageContext);
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -73,16 +77,17 @@ export default function Contact() {
             <textarea 
               id="Message" 
               type="text" 
-              placeholder="message" 
+              placeholder= {language === "german" ? "nachricht" : "message"} 
               rows={4} 
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               />
           </p>
           <p>
-            <button type="submit">send</button>
+            <button type="submit"> {language === "german" ? "senden" : "send"} </button>
           </p>
         </form>
+
         <SocialButtons />
       </div>
     </>
