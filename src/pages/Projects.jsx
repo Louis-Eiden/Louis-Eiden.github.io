@@ -120,6 +120,7 @@ export default function Projects() {
                     ? `url(${data.mobile_img})`
                     : `url(${data.desktop_img})`,
                 }}
+                onClick={scrollToNextSection}
                 // onClick={(e) => scrollIntoView(e)}
               >
                 {/* <iframe
