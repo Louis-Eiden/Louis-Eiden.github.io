@@ -14,6 +14,7 @@ export default function Projects() {
   const [arrowState, setArrowState] = useState("");
   const [arrowDirection, setArrowDirection] = useState("");
   const [section, setSection] = useState("");
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const sliderContainerRef = useRef(null);
   const { language } = useContext(LanguageContext);
@@ -29,9 +30,29 @@ export default function Projects() {
     threshold: 0.7,
   };
 
-  useEffect(() => {
-    const projectItems = document.querySelectorAll(".project");
+  const handleWheel = (e) => {
+    e.preventDefault();
+    const container = sliderContainerRef.current;
+    if (container) {
+      const scrollAmount = e.deltaY;
+      const newPosition = scrollPosition + scrollAmount;
+      
+      // Ensure we don't scroll past the bounds of the container
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      const clampedPosition = Math.max(0, Math.min(newPosition, maxScroll));
+      
+      setScrollPosition(clampedPosition);
+      container.scrollTo({
+        left: clampedPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
 
+  useEffect(() => {
+    const sliderContainer = sliderContainerRef.current;
+    const projectItems = document.querySelectorAll(".project");
+  
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -40,15 +61,22 @@ export default function Projects() {
         }
       });
     };
-
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions
-    );
+  
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
     projectItems.forEach((item) => observer.observe(item));
-
-    return () => observer.disconnect();
-  }, [sliderContainerRef]);
+  
+    // Add wheel event listener
+    if (sliderContainer) {
+      sliderContainer.addEventListener('wheel', handleWheel, { passive: false });
+    }
+  
+    return () => {
+      observer.disconnect();
+      if (sliderContainer) {
+        sliderContainer.removeEventListener('wheel', handleWheel);
+      }
+    };
+  }, [handleWheel]);
 
   // const scrollIntoView = (e) => {
   //   const projectElement = e.currentTarget;
@@ -108,7 +136,7 @@ export default function Projects() {
   return (
     <>
       <div className="projects_container">
-        <section ref={sliderContainerRef} id="projects_slider">
+        <section ref={sliderContainerRef} id="projects_slider" onWheel={handleWheel}>
           <div className="slides">
             {projectData.map((data, index) => (
               <div

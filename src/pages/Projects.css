@@ -15,6 +15,7 @@ html:has(.projects_container) {
 #projects_slider {
   scroll-snap-type: x proximity;
   overflow-x: auto;
+  overflow-y: hidden;
   /* padding: 0 50%; */
   /* WebKit browsers (Safari, Chrome) */
   -webkit-mask-image: linear-gradient(
