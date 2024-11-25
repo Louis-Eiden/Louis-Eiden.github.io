@@ -1,5 +1,11 @@
-import React, { useRef, useEffect, useState, useContext } from "react";
-
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  useContext,
+  useMemo,
+  useCallback,
+} from "react";
 import { motion } from "framer-motion";
 
 import { LanguageContext } from "../utils/LanguageContext.jsx";
@@ -24,35 +30,41 @@ export default function Projects() {
   let isMobile = width <= mobile_breakpoint;
 
   // ------------------- Projects Slider ---------------- //
-  const observerOptions = {
-    root: null,
-    rootMargin: "0px",
-    threshold: 0.7,
-  };
+  const observerOptions = useMemo(
+    () => ({
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.7,
+    }),
+    []
+  );
 
-  const handleWheel = (e) => {
-    e.preventDefault();
-    const container = sliderContainerRef.current;
-    if (container) {
-      const scrollAmount = e.deltaY;
-      const newPosition = scrollPosition + scrollAmount;
-      
-      // Ensure we don't scroll past the bounds of the container
-      const maxScroll = container.scrollWidth - container.clientWidth;
-      const clampedPosition = Math.max(0, Math.min(newPosition, maxScroll));
-      
-      setScrollPosition(clampedPosition);
-      container.scrollTo({
-        left: clampedPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+  const handleWheel = useCallback(
+    (e) => {
+      e.preventDefault();
+      const container = sliderContainerRef.current;
+      if (container) {
+        const scrollAmount = e.deltaY;
+        const newPosition = scrollPosition + scrollAmount;
+
+        // Ensure we don't scroll past the bounds of the container
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        const clampedPosition = Math.max(0, Math.min(newPosition, maxScroll));
+
+        setScrollPosition(clampedPosition);
+        container.scrollTo({
+          left: clampedPosition,
+          behavior: "smooth",
+        });
+      }
+    },
+    [scrollPosition]
+  );
 
   useEffect(() => {
     const sliderContainer = sliderContainerRef.current;
     const projectItems = document.querySelectorAll(".project");
-  
+
     const observerCallback = (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -61,22 +73,26 @@ export default function Projects() {
         }
       });
     };
-  
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
     projectItems.forEach((item) => observer.observe(item));
-  
-    // Add wheel event listener
+
     if (sliderContainer) {
-      sliderContainer.addEventListener('wheel', handleWheel, { passive: false });
+      sliderContainer.addEventListener("wheel", handleWheel, {
+        passive: false,
+      });
     }
-  
+
     return () => {
       observer.disconnect();
       if (sliderContainer) {
-        sliderContainer.removeEventListener('wheel', handleWheel);
+        sliderContainer.removeEventListener("wheel", handleWheel);
       }
     };
-  }, [handleWheel]);
+  }, [handleWheel, observerOptions]);
 
   // const scrollIntoView = (e) => {
   //   const projectElement = e.currentTarget;
@@ -136,7 +152,11 @@ export default function Projects() {
   return (
     <>
       <div className="projects_container">
-        <section ref={sliderContainerRef} id="projects_slider" onWheel={handleWheel}>
+        <section
+          ref={sliderContainerRef}
+          id="projects_slider"
+          onWheel={handleWheel}
+        >
           <div className="slides">
             {projectData.map((data, index) => (
               <div
@@ -354,10 +374,66 @@ const projectData = [
   // },
   // ----------------------------- Apps ----------------------------- //
   // {
-  //   Name: "Abbrandwächter",
-  //   // desktop_img: abbrandwächterThumbnail,
-  //   // mobile_img: abbrandwächterMobileThumbnail,
-  //   text_en: "",
-  //   text_de: "",
+  //   Name: "Raspian MySQL 4.2",
+  //   desktop_img: "assets/projects/Raspian MySQL 4.2/raspian-mysql-4.2-1.png",
+  //   mobile_img: "assets/projects/Raspian MySQL 4.2/raspian-mysql-4.2-1.png",
+  //   text_en: "Raspian MySQL 4.2",
+  //   text_de: "Raspian MySQL 4.2",
   // },
+  {
+    Name: "Abbrandwächter",
+    desktop_img: "assets/projects/abbrandsensor/abbrandsensor-1.jpg",
+    mobile_img: "assets/projects/abbrandsensor/abbrandsensor-1.jpg",
+    text_en:
+      'The "Abbrandwächter" is an IoT Device based on an ESP8266. ' +
+      'The project is still "work in Progress". ' +
+      "Currently I am figuring out the power supply, there are several options: " +
+      "1. a Peltier element " +
+      "2. a simple power supply" +
+      "3. a battery" +
+      "each has its own advantages and disadvantages." +
+      "Besides that the App needs a Settings page to configure the WiFi and threshold temperature." +
+      "The App is written in React Native." +
+      "The ESP is programmed in C++." +
+      "App and ESP are connected via Websocket." +
+      "The temperature is measured with an K-Type Temperature sensor Connected drirectly to the ESP." +
+      "Working range: -100°C - 1250°C with a Stainless steel braid Cable outer shield" +
+      "The App connects automatically to the WiFi of the ESP (if present) to set the WiFi Credentials.(TODO: this Page is not done yet!)" +
+      "Context: The ESP is programmed to only start a Wifi AP if no other WiFi connection is available or he has no WiFi Credentials stored." +
+      "There is also a http-server running on the ESP to configure the Wifi Connection." +
+      "As soon as the Wifin Data is set and a connection is established the ESP disables his Wifi AP and connects directly to the Wifi. " +
+      "When the wifi connection is established the App proceeds to connect to the ESP Websocket connection using it's MDNS name." +
+      "The ESP sends the temperature data to the App via Websocket." +
+      "The App displays the temperature and the status of the device. alternatively you can visit the <a href='https://abbrandwächter.de' class='link'>Webpage</a><span class='link-arrow'>&#129133;</span> of the device." +
+      "The ESP has also a built in button and piezo buzzer to take a threshold temperature and notify the user if the threshold temperature fell below .",
+    text_de:
+      'Der "Abbrandwächter" ist ein IoT-Gerät, das auf einem ESP8266 basiert. ' +
+      'Das Projekt befindet sich noch "in Entwicklung". ' +
+      "Derzeit arbeite ich an der Stromversorgung, für die es mehrere Optionen gibt: " +
+      "1. ein Peltier-Element " +
+      "2. ein einfaches Netzteil " +
+      "3. eine Batterie " +
+      "jede Option hat ihre eigenen Vor- und Nachteile. " +
+      "Außerdem benötigt die App noch eine Einstellungsseite zur Konfiguration des WLANs und der Schwellentemperatur. " +
+      "Die App ist in React Native geschrieben. " +
+      "Der ESP ist in C++ programmiert. " +
+      "App und ESP sind über Websocket verbunden. " +
+      "Die Temperatur wird mit einem K-Typ Temperatursensor gemessen, der direkt mit dem ESP verbunden ist. " +
+      "Arbeitsbereich: -100°C - 1250°C mit einem Edelstahl-Ummantelungskabel. " +
+      "Die App verbindet sich automatisch mit dem WLAN des ESP (falls vorhanden), um die WLAN-Zugangsdaten einzurichten. (TODO: Diese Seite ist noch nicht fertig!) " +
+      "Kontext: Der ESP ist so programmiert, dass er nur dann einen WLAN-AP startet, wenn keine andere WLAN-Verbindung verfügbar ist oder keine WLAN-Zugangsdaten gespeichert sind. " +
+      "Auf dem ESP läuft auch ein HTTP-Server zur Konfiguration der WLAN-Verbindung. " +
+      "Sobald die WLAN-Daten eingerichtet sind und eine Verbindung hergestellt ist, deaktiviert der ESP seinen WLAN-AP und verbindet sich direkt mit dem WLAN. " +
+      "Wenn die WLAN-Verbindung hergestellt ist, verbindet sich die App über den MDNS-Namen mit der ESP-Websocket-Verbindung. " +
+      "Der ESP sendet die Temperaturdaten über Websocket an die App. " +
+      "Die App zeigt die Temperatur und den Status des Geräts an. Alternativ können Sie auch die <a href='https://abbrandwächter.de' class='link'>Webseite</a><span class='link-arrow'>&#129133;</span> des Geräts besuchen. " +
+      "Der ESP verfügt außerdem über einen eingebauten Taster und Summer, um eine Schwellentemperatur festzulegen und den Benutzer zu benachrichtigen, wenn die Schwellentemperatur unterschritten wird.",
+  },
+  {
+    Name: "Qrush Webapp",
+    desktop_img: "assets/projects/qrushwebapp/qrush1.png",
+    mobile_img: "assets/projects/qrushwebapp/qrush1.png",
+    text_en: "Qrush Webapp",
+    text_de: "Qrush Webapp",
+  },
 ];
