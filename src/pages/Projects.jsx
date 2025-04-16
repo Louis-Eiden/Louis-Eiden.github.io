@@ -382,8 +382,8 @@ const projectData = [
   // },
   {
     Name: "Abbrandwächter",
-    desktop_img: "assets/projects/abbrandsensor/abbrandsensor-1.jpg",
-    mobile_img: "assets/projects/abbrandsensor/abbrandsensor-1.jpg",
+    desktop_img: "/assets/projects/abbrandsensor/abbrandsensor-1.jpg",
+    mobile_img: "/assets/projects/abbrandsensor/abbrandsensor-1.jpg",
     text_en:
       'The "Abbrandwächter" is an IoT Device based on an ESP8266. ' +
       'The project is still "work in Progress". ' +
@@ -431,8 +431,8 @@ const projectData = [
   },
   {
     Name: "Qrush Webapp",
-    desktop_img: "assets/projects/qrushwebapp/qrush1.png",
-    mobile_img: "assets/projects/qrushwebapp/qrush1.png",
+    desktop_img: "/assets/projects/qrushwebapp/qrush1.png",
+    mobile_img: "/assets/projects/qrushwebapp/qrush1.png",
     text_en: "Qrush Webapp",
     text_de: "Qrush Webapp",
   },
