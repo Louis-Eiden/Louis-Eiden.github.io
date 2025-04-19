@@ -1,11 +1,11 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState, useMemo, useCallback } from "react";
 import { projectData } from "../data/ProjectData";
+import { useViewport } from "../utils/ViewportContext";
 
-// TODO: add property for project-uid
-export function ProjectsSlider() {
-  const [activeIndex, setActiveIndex] = useState(null);
-
+// Component accepts activeIndex and setActiveIndex as props
+export function ProjectsSlider({ activeIndex, setActiveIndex, onProjectClick }) {
   const sliderContainerRef = useRef(null);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   const { width } = useViewport();
   const mobile_breakpoint = 480;
@@ -102,8 +102,7 @@ export function ProjectsSlider() {
                 ? `url(${data.mobile_img})`
                 : `url(${data.desktop_img})`,
             }}
-            onClick={scrollToNextSection}
-            // onClick={(e) => scrollIntoView(e)}
+            onClick={() => onProjectClick && onProjectClick(index)}
           >
             {/* <iframe
             title={`project-iframe-${index}`}
