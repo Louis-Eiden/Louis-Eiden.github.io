@@ -2,6 +2,8 @@
 
 /components.old
 /.git.old
+/venv
+
 
 # dependencies
 /node_modules
@@ -24,3 +26,4 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.aider*

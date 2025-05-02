@@ -4,7 +4,7 @@
   --text-color: #707070;
   --footer-text-color: #ffffff;
 
-  --border-small: 2px solid #707070;
+  --border-small: 2px solid rgb(112, 112, 112);
   --border-big: 4px solid #707070;
 }
 
