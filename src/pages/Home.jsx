@@ -132,7 +132,7 @@ export default function Home() {
           <motion.div
             initial={{
               opacity: 0,
-              y: isMobile ? "-50%" : "-50%",
+              y: isMobile ? "-40%" : "-40%",
               x: isMobile ? -100 : 100,
             }}
             whileInView={{ opacity: 1, x: 0 }}

@@ -431,7 +431,7 @@ const timelineData = [
       "utilizing modern technologies. My expertise spans front-end development with React and TypeScript, " +
       "back-end solutions using Django with custom OAuth and REST APIs, and mobile applications. " +
       "I've implemented IoT solutions using C++ for ESP8266 chips and configured server environments " +
-      "with Docker containers, SSH, and firewall settings. My technical versatility extends to database management, " +
+      "with Docker containers, Nginx Reverse Proxy, and firewall settings. My technical versatility extends to database management, " +
       "having set up and maintained MySQL servers on Raspberry Pi. Currently focused on mobile application development using Bun, " +
       "TypeScript, and React, I continuously expand my skills across the full development stack.",
     text_de:
@@ -439,7 +439,7 @@ const timelineData = [
       "Meine Expertise umfasst Frontend-Entwicklung mit React und TypeScript, Backend-Lösungen mit Django " +
       "inklusive eigener OAuth- und REST-API-Implementierungen sowie Mobile-Anwendungen. " +
       "Ich habe IoT-Lösungen mit C++ für ESP8266-Chips umgesetzt und Serverumgebungen " +
-      "mit Docker-Containern, SSH und Firewall-Einstellungen konfiguriert. " +
+      "mit Docker-Containern, Nginx Reverse Proxy und Firewall-Einstellungen konfiguriert. " +
       "Meine technische Vielseitigkeit erstreckt sich auf Datenbankverwaltung, " +
       "wobei ich alte MySQL-Server auf aktuellen Raspberry Pi eingerichtet und gewartet habe. " +
       "Derzeit konzentriere ich mich auf die Entwicklung mobiler Anwendungen mit Bun, TypeScript und React " +
