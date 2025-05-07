@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.a0ac1747.css",
-    "main.js": "/static/js/main.2d5bff7f.js",
+    "main.css": "/static/css/main.06e779eb.css",
+    "main.js": "/static/js/main.203d162a.js",
     "static/media/tinyhouse16.jpg": "/static/media/tinyhouse16.9a058a5b47136c245320.jpg",
     "static/media/tinyhouse8.jpg": "/static/media/tinyhouse8.bdaeddf619cd3b332187.jpg",
     "static/media/tinyhouse14.jpg": "/static/media/tinyhouse14.562b2b7d116287449144.jpg",
@@ -24,11 +24,11 @@
     "static/media/tinyhouse4.jpg": "/static/media/tinyhouse4.588d766c8954a1348219.jpg",
     "static/media/tinyhouse.jpg": "/static/media/tinyhouse.21ae77ac2569b69430ec.jpg",
     "index.html": "/index.html",
-    "main.a0ac1747.css.map": "/static/css/main.a0ac1747.css.map",
-    "main.2d5bff7f.js.map": "/static/js/main.2d5bff7f.js.map"
+    "main.06e779eb.css.map": "/static/css/main.06e779eb.css.map",
+    "main.203d162a.js.map": "/static/js/main.203d162a.js.map"
   },
   "entrypoints": [
-    "static/css/main.a0ac1747.css",
-    "static/js/main.2d5bff7f.js"
+    "static/css/main.06e779eb.css",
+    "static/js/main.203d162a.js"
   ]
 }
