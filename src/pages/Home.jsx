@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 // import Logo from "../components/Logo";
 
 import { LanguageContext } from "../utils/LanguageContext.jsx";
-import { useViewport } from "../utils/ViewportContext";
+import { useViewport, useOrientation } from "../utils/ViewportContext";
 
 // import ScrollReveal from "../utils/ScrollReveal";
 
@@ -30,8 +30,13 @@ export default function Home() {
   const { language } = useContext(LanguageContext);
 
   const { width } = useViewport();
+  const orientation = useOrientation();
   const mobile_breakpoint = 480;
   let isMobile = width <= mobile_breakpoint;
+
+  useEffect(() => {
+    console.log(orientation);
+  }, [orientation]);
 
   // const [elementsToReveal, setElementsToReveal] = useState([]);
   // const summaryRef = useRef(null);
@@ -127,70 +132,99 @@ export default function Home() {
           <motion.div
             initial={{
               opacity: 0,
-              y: isMobile ? -50 : -10,
+              y: isMobile ? "-50%" : "-50%",
               x: isMobile ? -100 : 100,
             }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             className="summary"
           >
-            {/* <div className="summary" ref={summaryRef}> */}
+            {/* First determine content based on language and mobile status */}
             {language === "german" ? (
               <>
-                <p className="DE">
-                  Hallo, ich bin Louis, Full-Stack-Entwickler aus Deutschland. 1
-                  Jahr Erfahrung in Python, React, Node.js und Postgres. Hoch
-                  motivierter, innovative Weblösungen zu entwickeln!
-                </p>
-                {width < 378 ? (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate="visible"
-                    variants={mobileAngleVariants}
-                    transition={{ duration: 1, delay: 1 }}
-                    className="mobile-angle"
-                  >
-                    {" "}
-                    <p onClick={scrollToNextSection}>hier gehts weiter</p>
-                    <p>
-                      <FaAngleDown />
-                    </p>
-                  </motion.div>
+                {/* German content */}
+                {width < 651 ||
+                (width <= 1024 && orientation === "landscape") ? (
+                  <p className="DE">
+                    Full-Stack Junior Mobile- und Web-Entwickler mit Expertise
+                    in React, Node.js sowie Arduino und ESP8266-Systemen. Ich
+                    entwickle seit 2022 responsive Webanwendungen und clevere
+                    IoT-Lösungen, die durch sauberen Code und durchdachte
+                    Konzepte überzeugen. Technische Vielseitigkeit trifft auf
+                    Leidenschaft für innovative Problemlösungen.
+                  </p>
                 ) : (
-                  ""
+                  <p className="DE">
+                    Als vielseitiger Junior Entwickler verbinde ich mit
+                    Begeisterung digitale und physische Realitäten durch
+                    innovative Programmierung. Seit 2022 konzentriere ich mich
+                    auf die Entwicklung zuverlässiger Webanwendungen mit React,
+                    Node.js und TypeScript, während ich gleichzeitig
+                    Embedded-Systeme mit Arduino, PIC-Mikrocontrollern und
+                    ESP8266 konstruiere. Mein Expertise-Spektrum umfasst
+                    Full-Stack-Webentwicklung, mobile Anwendungen, IoT-Projekte
+                    und Serverkonfiguration – stets mit technischer Kreativität
+                    umgesetzt. Ich verbinde zeitgemäße Entwicklungsansätze mit
+                    pragmatischen Lösungsstrategien, um plattformübergreifende
+                    Systeme zu schaffen, die durch ihre Effizienz und
+                    Benutzerfreundlichkeit überzeugen.
+                  </p>
                 )}
               </>
             ) : (
               <>
-                <p className="EN">
-                  Hi, I am Louis, full-stack developer from Germany. 1 year of
-                  experience in Python, React, Node.js, and Postgres. Ready to
-                  create innovative web solutions!
-                </p>
-                {width < 378 ? (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate="visible"
-                    variants={mobileAngleVariants}
-                    transition={{ duration: 1, delay: 1 }}
-                    className="mobile-angle"
-                  >
-                    {" "}
-                    <p onClick={scrollToNextSection}>scroll for more</p>
-                    <p>
-                      <FaAngleDown />
-                    </p>
-                  </motion.div>
+                {/* English content */}
+                {width < 651 ||
+                (width <= 1024 && orientation === "landscape") ? (
+                  <p className="EN">
+                    Full-stack Junior Developer crafting web apps with React &
+                    Node.js while building embedded solutions with Arduino &
+                    ESP8266. From responsive websites to custom IoT devices, I
+                    deliver creative solutions that bridge digital and physical
+                    worlds. Passionate about clean code and practical
+                    problem-solving since 2022.
+                  </p>
                 ) : (
-                  ""
+                  <p className="EN">
+                    Hi, I'm a versatile Junior Developer passionate about
+                    bridging the digital and physical worlds through code. Since
+                    2022, I've been crafting robust web applications with React,
+                    Node.js, and TypeScript while also building embedded
+                    solutions using Arduino, PIC microcontrollers, and ESP8266
+                    devices. From full-stack web development and mobile apps to
+                    IoT solutions and server configuration, I bring technical
+                    creativity to every project. Whether you need a responsive
+                    web application, a custom IoT device, or help with legacy
+                    systems integration, I combine modern development practices
+                    with practical problem-solving to deliver solutions that
+                    work seamlessly across platforms.
+                  </p>
                 )}
               </>
             )}
-            {/* </div> */}
           </motion.div>
           {/* <div className="picture-container">
             <img className="picture" src={louis} alt="" />
           </div> */}
+          {/* Separate conditional for the mobile angle that applies to both languages */}
+          {width < 378 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate="visible"
+              variants={mobileAngleVariants}
+              transition={{ duration: 1, delay: 1 }}
+              className="mobile-angle"
+            >
+              <p onClick={scrollToNextSection}>
+                {language === "german"
+                  ? "hier gehts weiter"
+                  : "scroll for more"}
+              </p>
+              <p>
+                <FaAngleDown />
+              </p>
+            </motion.div>
+          )}
         </section>
         <section id="tech">
           {/* <div className="tech_heading">tech</div> */}
