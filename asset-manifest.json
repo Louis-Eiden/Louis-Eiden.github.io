@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.06e779eb.css",
-    "main.js": "/static/js/main.739d6d5c.js",
+    "main.js": "/static/js/main.ef24321f.js",
     "static/media/tinyhouse16.jpg": "/static/media/tinyhouse16.9a058a5b47136c245320.jpg",
     "static/media/tinyhouse8.jpg": "/static/media/tinyhouse8.bdaeddf619cd3b332187.jpg",
     "static/media/tinyhouse14.jpg": "/static/media/tinyhouse14.562b2b7d116287449144.jpg",
@@ -25,10 +25,10 @@
     "static/media/tinyhouse.jpg": "/static/media/tinyhouse.21ae77ac2569b69430ec.jpg",
     "index.html": "/index.html",
     "main.06e779eb.css.map": "/static/css/main.06e779eb.css.map",
-    "main.739d6d5c.js.map": "/static/js/main.739d6d5c.js.map"
+    "main.ef24321f.js.map": "/static/js/main.ef24321f.js.map"
   },
   "entrypoints": [
     "static/css/main.06e779eb.css",
-    "static/js/main.739d6d5c.js"
+    "static/js/main.ef24321f.js"
   ]
 }
