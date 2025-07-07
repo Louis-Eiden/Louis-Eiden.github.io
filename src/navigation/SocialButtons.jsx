@@ -29,10 +29,16 @@ export default function SocialButtons() {
         </Link>
         <Link
           className="social_item"
+          to="https://stackexchange.com/users/26904281/louis-eiden"
+        >
+          <FaIcons.FaStackExchange id="stack" />
+        </Link>
+        {/* <Link
+          className="social_item"
           to="https://www.youtube.com/@louiseiden3898"
         >
           <FaIcons.FaYoutube id="youtube" />
-        </Link>
+        </Link> */}
         <Link className="social_item" mailto="eidenlouis.mt@gmail.com">
           <FaIcons.FaEnvelope id="mail" />
         </Link>
